@@ -3,8 +3,8 @@ const path = require("path");
 const fs = require("fs");
 const { parseNomeArquivo, FILIAIS_VALIDAS, INDUSTRIAS } = require("./parser");
 
-const DATA_DIR = process.env.DATA_DIR || "/data";
-const WATCH_DIR = process.env.WATCH_DIR || path.join(DATA_DIR, "watch");
+const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, "data");
+const WATCH_DIR = process.env.WATCH_DIR || path.join(__dirname, "watch");
 const STATUS_PATH = process.env.STATUS_PATH || path.join(DATA_DIR, "status.json");
 
 function getPaths() {
