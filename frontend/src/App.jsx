@@ -3,6 +3,7 @@ import axios from "axios";
 import "./App.css";
 
 const FILIAIS = ["DPR", "AMS", "DMT", "DMS", "DSC"];
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
 
 function App() {
   const [dados, setDados] = useState({});
@@ -10,18 +11,17 @@ function App() {
   const [somenteAtualizadas, setSomenteAtualizadas] = useState(false);
 
   useEffect(() => {
-  async function carregar() {
-    try {
-      const API_URL = import.meta.env.VITE_API_URL;
-      const res = await axios.get(`${API_URL}/status`);
-      setDados(res.data || {});
-    } catch (error) {
-      console.error("Erro ao carregar status:", error);
+    async function carregar() {
+      try {
+        const res = await axios.get(`${API_URL}/status`);
+        setDados(res.data || {});
+      } catch (error) {
+        console.error("Erro ao carregar status:", error);
+      }
     }
-  }
 
-  carregar();
-}, []);
+    carregar();
+  }, []);
 
   function temAlgumaAtualizacao(row) {
     const temPreco = FILIAIS.some((f) => row.precos?.[f]?.atualizado);
