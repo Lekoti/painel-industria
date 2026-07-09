@@ -1,0 +1,7156 @@
+{
+  "CIFARMA": {
+    "industria": "CIFARMA",
+    "codigo": 39,
+    "ordem": 0,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "ECOFITUS": {
+    "industria": "ECOFITUS",
+    "codigo": 180,
+    "ordem": 1,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "EMS": {
+    "industria": "EMS",
+    "codigo": 56,
+    "ordem": 2,
+    "precos": {
+      "DPR": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "AMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMT": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DSC": {
+        "atualizado": true,
+        "mes": "07/2026"
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DSC": {
+        "atualizado": true,
+        "mes": "07/2026"
+      }
+    }
+  },
+  "EMS GENERICO": {
+    "industria": "EMS GENERICO",
+    "codigo": 875,
+    "ordem": 3,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "EUROFARMA": {
+    "industria": "EUROFARMA",
+    "codigo": 60,
+    "ordem": 4,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "GEOLAB": {
+    "industria": "GEOLAB",
+    "codigo": 9,
+    "ordem": 5,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "KLEY HERTZ": {
+    "industria": "KLEY HERTZ",
+    "codigo": 68,
+    "ordem": 6,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "LEGRAND GENERICOS": {
+    "industria": "LEGRAND GENERICOS",
+    "codigo": 4,
+    "ordem": 7,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "LEGRAND TARJADOS": {
+    "industria": "LEGRAND TARJADOS",
+    "codigo": 2,
+    "ordem": 8,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "MAXINUTRI": {
+    "industria": "MAXINUTRI",
+    "codigo": 193,
+    "ordem": 9,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": true,
+        "mes": "07/2026"
+      }
+    }
+  },
+  "MULTILAB": {
+    "industria": "MULTILAB",
+    "codigo": 8,
+    "ordem": 10,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "NATULAB": {
+    "industria": "NATULAB",
+    "codigo": 85,
+    "ordem": 11,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "NEO QUIMICA GENERICO": {
+    "industria": "NEO QUIMICA GENERICO",
+    "codigo": 5,
+    "ordem": 12,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "NEO QUIMICA SMART": {
+    "industria": "NEO QUIMICA SMART",
+    "codigo": 1,
+    "ordem": 13,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "TEUTO": {
+    "industria": "TEUTO",
+    "codigo": 3,
+    "ordem": 14,
+    "precos": {
+      "DPR": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": true,
+        "mes": "07/2026"
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "VITAMEDIC": {
+    "industria": "VITAMEDIC",
+    "codigo": 118,
+    "ordem": 15,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "3B": {
+    "industria": "3B",
+    "codigo": 778,
+    "ordem": 16,
+    "precos": {
+      "DPR": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "AMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMT": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DSC": {
+        "atualizado": true,
+        "mes": "07/2026"
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "ABOVE": {
+    "industria": "ABOVE",
+    "codigo": 750,
+    "ordem": 17,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "ACCUMED": {
+    "industria": "ACCUMED",
+    "codigo": 10,
+    "ordem": 18,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "ADDIT": {
+    "industria": "ADDIT",
+    "codigo": 11,
+    "ordem": 19,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "ADV LAB TAYUYNA": {
+    "industria": "ADV LAB TAYUYNA",
+    "codigo": 12,
+    "ordem": 20,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "AIRELA": {
+    "industria": "AIRELA",
+    "codigo": 231,
+    "ordem": 21,
+    "precos": {
+      "DPR": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "AMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMT": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DSC": {
+        "atualizado": true,
+        "mes": "07/2026"
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "ALPHAFITUS CREATINA": {
+    "industria": "ALPHAFITUS CREATINA",
+    "codigo": 882,
+    "ordem": 22,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "AMAKHA PARIS": {
+    "industria": "AMAKHA PARIS",
+    "codigo": 909,
+    "ordem": 23,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "ANALITIC": {
+    "industria": "ANALITIC",
+    "codigo": 15,
+    "ordem": 24,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "ARTE NATIVA VELTOFARMA": {
+    "industria": "ARTE NATIVA VELTOFARMA",
+    "codigo": 18,
+    "ordem": 25,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "AVIZOR": {
+    "industria": "AVIZOR",
+    "codigo": 873,
+    "ordem": 26,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "AVVIO": {
+    "industria": "AVVIO",
+    "codigo": 863,
+    "ordem": 27,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "BEIRA ALTA": {
+    "industria": "BEIRA ALTA",
+    "codigo": 868,
+    "ordem": 28,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "BELFAR": {
+    "industria": "BELFAR",
+    "codigo": 169,
+    "ordem": 29,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "BELLAPHYTUS": {
+    "industria": "BELLAPHYTUS",
+    "codigo": 859,
+    "ordem": 30,
+    "precos": {
+      "DPR": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "AMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMT": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DSC": {
+        "atualizado": true,
+        "mes": "07/2026"
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "BIONATUS": {
+    "industria": "BIONATUS",
+    "codigo": 24,
+    "ordem": 31,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "BRASTERAPICA": {
+    "industria": "BRASTERAPICA",
+    "codigo": 28,
+    "ordem": 32,
+    "precos": {
+      "DPR": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "AMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMT": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DSC": {
+        "atualizado": true,
+        "mes": "07/2026"
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "BREYER": {
+    "industria": "BREYER",
+    "codigo": 779,
+    "ordem": 33,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "BUTTERFLY": {
+    "industria": "BUTTERFLY",
+    "codigo": 31,
+    "ordem": 34,
+    "precos": {
+      "DPR": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "AMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMT": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DSC": {
+        "atualizado": true,
+        "mes": "07/2026"
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "C M HOSPITALAR": {
+    "industria": "C M HOSPITALAR",
+    "codigo": 32,
+    "ordem": 35,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "CARTA FABRIL": {
+    "industria": "CARTA FABRIL",
+    "codigo": 742,
+    "ordem": 36,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "CATARINENSE": {
+    "industria": "CATARINENSE",
+    "codigo": 34,
+    "ordem": 37,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "CATARINENSE MATACURA": {
+    "industria": "CATARINENSE MATACURA",
+    "codigo": 35,
+    "ordem": 38,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "CAZI": {
+    "industria": "CAZI",
+    "codigo": 36,
+    "ordem": 39,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "CCM": {
+    "industria": "CCM",
+    "codigo": 843,
+    "ordem": 40,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "CELLERA DELTA": {
+    "industria": "CELLERA DELTA",
+    "codigo": 49,
+    "ordem": 41,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "CIFARMA PROPAGANDA MEDICA": {
+    "industria": "CIFARMA PROPAGANDA MEDICA",
+    "codigo": 179,
+    "ordem": 42,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "CIMED": {
+    "industria": "CIMED",
+    "codigo": 40,
+    "ordem": 43,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "CIRURGICA FERNANDES": {
+    "industria": "CIRURGICA FERNANDES",
+    "codigo": 41,
+    "ordem": 44,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "COMERCIO E DISTRIBUIDORA DELTA": {
+    "industria": "COMERCIO E DISTRIBUIDORA DELTA",
+    "codigo": 724,
+    "ordem": 45,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "CREMER": {
+    "industria": "CREMER",
+    "codigo": 44,
+    "ordem": 46,
+    "precos": {
+      "DPR": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "AMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMT": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "DKT": {
+    "industria": "DKT",
+    "codigo": 46,
+    "ordem": 47,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "DACOLONIA": {
+    "industria": "DACOLONIA",
+    "codigo": 893,
+    "ordem": 48,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "DENTAL CLEAN": {
+    "industria": "DENTAL CLEAN",
+    "codigo": 865,
+    "ordem": 49,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "DIVON": {
+    "industria": "DIVON",
+    "codigo": 53,
+    "ordem": 50,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "DORJA": {
+    "industria": "DORJA",
+    "codigo": 54,
+    "ordem": 51,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "DR PEANUT": {
+    "industria": "DR PEANUT",
+    "codigo": 889,
+    "ordem": 52,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "DRICA": {
+    "industria": "DRICA",
+    "codigo": 894,
+    "ordem": 53,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "E DE SOU TUBOS CIRUR RINELC": {
+    "industria": "E DE SOU TUBOS CIRUR RINELC",
+    "codigo": 61,
+    "ordem": 54,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "EQUIPLEX": {
+    "industria": "EQUIPLEX",
+    "codigo": 57,
+    "ordem": 55,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "ESCOBEL": {
+    "industria": "ESCOBEL",
+    "codigo": 869,
+    "ordem": 56,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "ESSITY FRALDAS TENA": {
+    "industria": "ESSITY FRALDAS TENA",
+    "codigo": 160,
+    "ordem": 57,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "FARMACE": {
+    "industria": "FARMACE",
+    "codigo": 784,
+    "ordem": 58,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "FARMAX": {
+    "industria": "FARMAX",
+    "codigo": 65,
+    "ordem": 59,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "FLOPI": {
+    "industria": "FLOPI",
+    "codigo": 886,
+    "ordem": 60,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "GIOVANNA BABY PRO NOVA": {
+    "industria": "GIOVANNA BABY PRO NOVA",
+    "codigo": 878,
+    "ordem": 61,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "GLOBO": {
+    "industria": "GLOBO",
+    "codigo": 122,
+    "ordem": 62,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "GREENPHARMA": {
+    "industria": "GREENPHARMA",
+    "codigo": 184,
+    "ordem": 63,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "GUM SUNSTAT": {
+    "industria": "GUM SUNSTAT",
+    "codigo": 786,
+    "ordem": 64,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "HADASS RIVICA TROL": {
+    "industria": "HADASS RIVICA TROL",
+    "codigo": 107,
+    "ordem": 65,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "HEALTHY": {
+    "industria": "HEALTHY",
+    "codigo": 832,
+    "ordem": 66,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "HEARST": {
+    "industria": "HEARST",
+    "codigo": 67,
+    "ordem": 67,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "HERBISSIMO": {
+    "industria": "HERBISSIMO",
+    "codigo": 913,
+    "ordem": 68,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "IFAL": {
+    "industria": "IFAL",
+    "codigo": 71,
+    "ordem": 69,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "IMEC": {
+    "industria": "IMEC",
+    "codigo": 72,
+    "ordem": 70,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "INBORPLAS": {
+    "industria": "INBORPLAS",
+    "codigo": 73,
+    "ordem": 71,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "INCOTERM": {
+    "industria": "INCOTERM",
+    "codigo": 74,
+    "ordem": 72,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "INJEX": {
+    "industria": "INJEX",
+    "codigo": 75,
+    "ordem": 73,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "INSTITUTO KRONER": {
+    "industria": "INSTITUTO KRONER",
+    "codigo": 130,
+    "ordem": 74,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "JD DISTRIBUIDORA": {
+    "industria": "JD DISTRIBUIDORA",
+    "codigo": 615,
+    "ordem": 75,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "KATIGUA": {
+    "industria": "KATIGUA",
+    "codigo": 885,
+    "ordem": 76,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "KUKA": {
+    "industria": "KUKA",
+    "codigo": 864,
+    "ordem": 77,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "LABOTRAT": {
+    "industria": "LABOTRAT",
+    "codigo": 860,
+    "ordem": 78,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "LABPHARMA": {
+    "industria": "LABPHARMA",
+    "codigo": 903,
+    "ordem": 79,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "LILLO": {
+    "industria": "LILLO",
+    "codigo": 872,
+    "ordem": 80,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "LOLLY": {
+    "industria": "LOLLY",
+    "codigo": 870,
+    "ordem": 81,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "MAKROFARMA": {
+    "industria": "MAKROFARMA",
+    "codigo": 79,
+    "ordem": 82,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "MALAVASI": {
+    "industria": "MALAVASI",
+    "codigo": 768,
+    "ordem": 83,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "MARJAN": {
+    "industria": "MARJAN",
+    "codigo": 787,
+    "ordem": 84,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "MAXTITANIUM": {
+    "industria": "MAXTITANIUM",
+    "codigo": 890,
+    "ordem": 85,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "MEDINAL": {
+    "industria": "MEDINAL",
+    "codigo": 195,
+    "ordem": 86,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "MEDIX": {
+    "industria": "MEDIX",
+    "codigo": 80,
+    "ordem": 87,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "MEDLEY": {
+    "industria": "MEDLEY",
+    "codigo": 726,
+    "ordem": 88,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "MEDQUIMICA": {
+    "industria": "MEDQUIMICA",
+    "codigo": 82,
+    "ordem": 89,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "MELPOEJO": {
+    "industria": "MELPOEJO",
+    "codigo": 136,
+    "ordem": 90,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "MERHEJE": {
+    "industria": "MERHEJE",
+    "codigo": 137,
+    "ordem": 91,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "MINANCORA": {
+    "industria": "MINANCORA",
+    "codigo": 199,
+    "ordem": 92,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "MISSNER": {
+    "industria": "MISSNER",
+    "codigo": 83,
+    "ordem": 93,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "MOVA MIDIAN": {
+    "industria": "MOVA MIDIAN",
+    "codigo": 735,
+    "ordem": 94,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "MULTILASER": {
+    "industria": "MULTILASER",
+    "codigo": 201,
+    "ordem": 95,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "NATCOFARMA": {
+    "industria": "NATCOFARMA",
+    "codigo": 908,
+    "ordem": 96,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "NATIVITA": {
+    "industria": "NATIVITA",
+    "codigo": 405,
+    "ordem": 97,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "NATU HAIR": {
+    "industria": "NATU HAIR",
+    "codigo": 771,
+    "ordem": 98,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "NEOBEM AGAPLAST": {
+    "industria": "NEOBEM AGAPLAST",
+    "codigo": 854,
+    "ordem": 99,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "NEOPAN": {
+    "industria": "NEOPAN",
+    "codigo": 738,
+    "ordem": 100,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "NORTE SUL": {
+    "industria": "NORTE SUL",
+    "codigo": 89,
+    "ordem": 101,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "NTL": {
+    "industria": "NTL",
+    "codigo": 144,
+    "ordem": 102,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "OMRON": {
+    "industria": "OMRON",
+    "codigo": 93,
+    "ordem": 103,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "ORA PRO NOBIS": {
+    "industria": "ORA PRO NOBIS",
+    "codigo": 881,
+    "ordem": 104,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "OSORIO DE MORAES": {
+    "industria": "OSORIO DE MORAES",
+    "codigo": 96,
+    "ordem": 105,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "PEROSUL": {
+    "industria": "PEROSUL",
+    "codigo": 97,
+    "ordem": 106,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "PHARLAB": {
+    "industria": "PHARLAB",
+    "codigo": 147,
+    "ordem": 107,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "PHARMASCIENCE": {
+    "industria": "PHARMASCIENCE",
+    "codigo": 99,
+    "ordem": 108,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "POLIBRINQ BRINQUEDOS": {
+    "industria": "POLIBRINQ BRINQUEDOS",
+    "codigo": 884,
+    "ordem": 109,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "PONTELAND": {
+    "industria": "PONTELAND",
+    "codigo": 100,
+    "ordem": 110,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "PRATI": {
+    "industria": "PRATI",
+    "codigo": 149,
+    "ordem": 111,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "PROBIOTICA": {
+    "industria": "PROBIOTICA",
+    "codigo": 891,
+    "ordem": 112,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "PROLIFE": {
+    "industria": "PROLIFE",
+    "codigo": 150,
+    "ordem": 113,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "PROMEL": {
+    "industria": "PROMEL",
+    "codigo": 777,
+    "ordem": 114,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "QUALYBLESS": {
+    "industria": "QUALYBLESS",
+    "codigo": 879,
+    "ordem": 115,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "QUALYNUTRI": {
+    "industria": "QUALYNUTRI",
+    "codigo": 905,
+    "ordem": 116,
+    "precos": {
+      "DPR": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "AMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMT": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DSC": {
+        "atualizado": true,
+        "mes": "07/2026"
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "AMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMT": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DSC": {
+        "atualizado": true,
+        "mes": "07/2026"
+      }
+    }
+  },
+  "RANBAXY": {
+    "industria": "RANBAXY",
+    "codigo": 104,
+    "ordem": 117,
+    "precos": {
+      "DPR": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "AMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMT": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DSC": {
+        "atualizado": true,
+        "mes": "07/2026"
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "RIOQUIMICA": {
+    "industria": "RIOQUIMICA",
+    "codigo": 106,
+    "ordem": 118,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "RUGOL": {
+    "industria": "RUGOL",
+    "codigo": 900,
+    "ordem": 119,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "SANFARMA": {
+    "industria": "SANFARMA",
+    "codigo": 109,
+    "ordem": 120,
+    "precos": {
+      "DPR": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "AMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMT": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DSC": {
+        "atualizado": true,
+        "mes": "07/2026"
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "SANIBRAS": {
+    "industria": "SANIBRAS",
+    "codigo": 110,
+    "ordem": 121,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "SANOFI": {
+    "industria": "SANOFI",
+    "codigo": 727,
+    "ordem": 122,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "SOBRAL": {
+    "industria": "SOBRAL",
+    "codigo": 111,
+    "ordem": 123,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "SPK": {
+    "industria": "SPK",
+    "codigo": 823,
+    "ordem": 124,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "TURMA DA MONICA": {
+    "industria": "TURMA DA MONICA",
+    "codigo": 888,
+    "ordem": 125,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "TUTTICARE": {
+    "industria": "TUTTICARE",
+    "codigo": 161,
+    "ordem": 126,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "UNIPHAR J R D": {
+    "industria": "UNIPHAR J R D",
+    "codigo": 822,
+    "ordem": 127,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "VCA": {
+    "industria": "VCA",
+    "codigo": 880,
+    "ordem": 128,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "VIDORA": {
+    "industria": "VIDORA",
+    "codigo": 116,
+    "ordem": 129,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "VITAFOR": {
+    "industria": "VITAFOR",
+    "codigo": 744,
+    "ordem": 130,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "VITAMED": {
+    "industria": "VITAMED",
+    "codigo": 117,
+    "ordem": 131,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "WALDOMIRO PEREIRA": {
+    "industria": "WALDOMIRO PEREIRA",
+    "codigo": 69,
+    "ordem": 132,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "WESP": {
+    "industria": "WESP",
+    "codigo": 119,
+    "ordem": 133,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "ZIIN ZIIN": {
+    "industria": "ZIIN ZIIN",
+    "codigo": 167,
+    "ordem": 134,
+    "precos": {
+      "DPR": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "AMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMT": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DSC": {
+        "atualizado": true,
+        "mes": "07/2026"
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "ZYDUS": {
+    "industria": "ZYDUS",
+    "codigo": 168,
+    "ordem": 135,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "FARMABRAZ PASSAJA": {
+    "industria": "FARMABRAZ PASSAJA",
+    "codigo": 63,
+    "ordem": 136,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "PRINCIPIA ES": {
+    "industria": "PRINCIPIA ES",
+    "codigo": 906,
+    "ordem": 137,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "ARTE NATIVA": {
+    "industria": "ARTE NATIVA",
+    "codigo": null,
+    "ordem": 999999,
+    "precos": {
+      "DPR": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "AMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMT": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DSC": {
+        "atualizado": true,
+        "mes": "07/2026"
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "AMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMT": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DSC": {
+        "atualizado": true,
+        "mes": "07/2026"
+      }
+    }
+  },
+  "BUTTERPFLY": {
+    "industria": "BUTTERPFLY",
+    "codigo": null,
+    "ordem": 999999,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "AMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMT": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DSC": {
+        "atualizado": true,
+        "mes": "07/2026"
+      }
+    }
+  },
+  "KTG": {
+    "industria": "KTG",
+    "codigo": null,
+    "ordem": 999999,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "LEGRAND": {
+    "industria": "LEGRAND",
+    "codigo": null,
+    "ordem": 999999,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "LEGRAND FARMA": {
+    "industria": "LEGRAND FARMA",
+    "codigo": null,
+    "ordem": 999999,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "UNIPHAR": {
+    "industria": "UNIPHAR",
+    "codigo": null,
+    "ordem": 999999,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "PRINCIPIA": {
+    "industria": "PRINCIPIA",
+    "codigo": null,
+    "ordem": 999999,
+    "precos": {
+      "DPR": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "AMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMT": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DSC": {
+        "atualizado": true,
+        "mes": "07/2026"
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "UBERPHARMA": {
+    "industria": "UBERPHARMA",
+    "codigo": null,
+    "ordem": 999999,
+    "precos": {
+      "DPR": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "AMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMT": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DSC": {
+        "atualizado": true,
+        "mes": "07/2026"
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  }
+}

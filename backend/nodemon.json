@@ -1,0 +1,6 @@
+{
+  "watch": ["server.js", "watcher.js", "parser.js", "industries.js"],
+  "ignore": ["data/*", "watch/*", "node_modules/*"],
+  "ext": "js,json",
+  "delay": "300ms"
+}

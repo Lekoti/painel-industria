@@ -1,0 +1,21 @@
+{
+  "name": "mkdir-backend",
+  "version": "1.0.0",
+  "description": "Backend do painel de precos e pendencias",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon --config nodemon.json server.js",
+    "start": "node server.js"
+  },
+  "type": "commonjs",
+  "dependencies": {
+    "chokidar": "^5.0.0",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "socket.io": "^4.8.3",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
