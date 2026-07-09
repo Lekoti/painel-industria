@@ -70,14 +70,6 @@ function App() {
             ? "Mostrando só atualizadas"
             : "Mostrar só atualizadas"}
         </button>
-
-        <button
-          type="button"
-          className="refresh-btn"
-          onClick={carregarStatus}
-        >
-          Atualizar painel
-        </button>
       </div>
 
       <div className="table-wrap">
