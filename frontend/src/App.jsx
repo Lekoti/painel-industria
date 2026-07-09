@@ -5,7 +5,7 @@ import "./App.css";
 
 const FILIAIS = ["DPR", "AMS", "DMT", "DMS", "DSC"];
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
+const API_URL = "https://painel-industria-backend.onrender.com";
 
 function App() {
   const [dados, setDados] = useState({});
