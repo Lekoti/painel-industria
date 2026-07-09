@@ -1,18 +1,21 @@
 import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
+import { io } from "socket.io-client";
 import "./App.css";
 
 const FILIAIS = ["DPR", "AMS", "DMT", "DMS", "DSC"];
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
+
 function App() {
   const [dados, setDados] = useState({});
   const [filtroIndustria, setFiltroIndustria] = useState("");
+  const [conectado, setConectado] = useState(false);
 
   useEffect(() => {
     async function carregar() {
       try {
-        const res = await axios.get("http://localhost:3001/status");
-        console.log("STATUS:", res.data);
+        const res = await axios.get(`${API_URL}/status`);
         setDados(res.data || {});
       } catch (error) {
         console.error("Erro ao carregar status:", error);
@@ -20,6 +23,18 @@ function App() {
     }
 
     carregar();
+
+    const socket = io(API_URL, { transports: ["websocket", "polling"] });
+
+    socket.on("connect", () => setConectado(true));
+    socket.on("disconnect", () => setConectado(false));
+    socket.on("status-atualizado", (status) => {
+      setDados(status || {});
+    });
+
+    return () => {
+      socket.disconnect();
+    };
   }, []);
 
   const linhas = useMemo(() => {
@@ -46,6 +61,9 @@ function App() {
           value={filtroIndustria}
           onChange={(e) => setFiltroIndustria(e.target.value)}
         />
+        <span className={conectado ? "status-live on" : "status-live off"}>
+          {conectado ? "● Ao vivo" : "○ Offline"}
+        </span>
       </div>
 
       <div className="table-wrap">

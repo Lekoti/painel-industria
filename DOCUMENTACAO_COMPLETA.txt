@@ -3,8 +3,12 @@
 ================================================================================
 
 DATA DE CRIAÇÃO: 09 de Julho de 2026
-VERSÃO DO PROJETO: 1.0.0
+VERSÃO DO PROJETO: 1.1.0
 TIPO: Aplicação Full-Stack (React + Node.js + Express)
+
+NOTA DE REVISÃO (09/07/2026): Documento revisado para refletir o
+comportamento real do código. Correções aplicadas nesta versão estão
+detalhadas na seção "21. HISTÓRICO DE ALTERAÇÕES".
 
 ================================================================================
                               1. VISÃO GERAL
@@ -45,6 +49,7 @@ painel-preco-pendencia/
 │   ├── index.html                    # HTML principal
 │   ├── package.json                  # Dependências e scripts do frontend
 │   ├── vite.config.js                # Configuração do Vite
+│   ├── .env                          # Variáveis de ambiente (VITE_API_URL)
 │   ├── README.md                     # README do template React
 │   ├── public/                       # Arquivos estáticos públicos
 │   ├── src/
@@ -54,6 +59,12 @@ painel-preco-pendencia/
 │   │   ├── index.css                 # Estilos globais
 │   │   └── assets/                   # Assets da aplicação (imagens, etc)
 │   └── dist/                         # Pasta de build (gerada após build)
+│
+└── render.yaml                       # Blueprint de deploy no Render (backend + frontend)
+
+NOTA: O arquivo backend/industries.js existe no repositório, mas NÃO é usado
+pela aplicação. A lista de indústrias efetivamente utilizada está embutida em
+backend/parser.js (array INDUSTRIAS).
 
 ================================================================================
                           3. TECNOLOGIAS UTILIZADAS
@@ -104,9 +115,10 @@ C) Gerenciamento de Status (status.json)
    - Rastreamento de mês/ano da última atualização
 
 D) API REST
-   - GET /status - Retorna o status completo do sistema
-   - GET /health - Verifica saúde do servidor
-   - GET /pendencias - Retorna status de pendências
+   - GET /status - Retorna o status completo do sistema (preços + pendências)
+   - GET /health - Verifica saúde do servidor (retorna { ok: true })
+   OBS.: Não existe rota separada /pendencias. Preços e pendências são
+   retornados juntos dentro de /status.
 
 E) WebSocket (Socket.io)
    - Evento: "status-atualizado" - Emitido quando status muda
@@ -133,15 +145,19 @@ C) Visualização de Status
    - Exibe mês/ano da última atualização quando disponível
 
 D) Integração em Tempo Real
-   - Carregamento inicial de dados via HTTP
-   - Atualização dinâmica via WebSocket
-   - Sincronização automática com servidor
+   - Carregamento inicial de dados via HTTP (GET /status)
+   - Atualização dinâmica via WebSocket (evento "status-atualizado")
+   - Sincronização automática com servidor sem recarregar a página
+   - Endereço do backend definido por VITE_API_URL (fallback: localhost:3001)
+   - Indicador visual de conexão na barra de ferramentas:
+     ● Ao vivo (conectado) / ○ Offline (desconectado)
 
 ================================================================================
                          5. LISTA DE INDÚSTRIAS
 ================================================================================
 
-O sistema monitora 150+ indústrias farmacêuticas e fornecedoras, incluindo:
+O sistema monitora ~138 indústrias farmacêuticas e fornecedoras (definidas no
+array INDUSTRIAS em backend/parser.js), incluindo:
 
 PRINCIPAIS INDÚSTRIAS:
 - NEO QUIMICA (SMART e GENERICO)
@@ -159,12 +175,12 @@ PRINCIPAIS INDÚSTRIAS:
 - MAXINUTRI
 - E muitas outras...
 
-CADA INDÚSTRIA POSSUI:
+CADA INDÚSTRIA POSSUI (em parser.js):
 - Código numérico único (ex: 1, 2, 3, 39, 56, etc)
-- Nome padrão
-- Aliases (nomes alternativos)
-- Ordem de exibição na tabela
-- Status de preços e pendências para cada filial
+- Nome (usado como chave e para exibição)
+- Aliases (nomes alternativos / erros de digitação comuns)
+A ordem de exibição na tabela e o status de preços/pendências por filial
+são gerados/mantidos no status.json (seed inicial + processamento de arquivos).
 
 ================================================================================
                         6. FILIAIS DO SISTEMA
@@ -194,17 +210,17 @@ Exemplo de estrutura do arquivo data/status.json:
     "codigo": 1,
     "ordem": 13,
     "precos": {
-      "DPR": { "atualizado": true, "mes": "2026-07" },
-      "AMS": { "atualizado": true, "mes": "2026-07" },
+      "DPR": { "atualizado": true, "mes": "07/2026" },
+      "AMS": { "atualizado": true, "mes": "07/2026" },
       "DMT": { "atualizado": false, "mes": null },
-      "DMS": { "atualizado": true, "mes": "2026-06" },
+      "DMS": { "atualizado": true, "mes": "06/2026" },
       "DSC": { "atualizado": false, "mes": null }
     },
     "pendencias": {
-      "DPR": { "atualizado": true, "mes": "2026-07" },
+      "DPR": { "atualizado": true, "mes": "07/2026" },
       "AMS": { "atualizado": false, "mes": null },
-      "DMT": { "atualizado": true, "mes": "2026-07" },
-      "DMS": { "atualizado": true, "mes": "2026-07" },
+      "DMT": { "atualizado": true, "mes": "07/2026" },
+      "DMS": { "atualizado": true, "mes": "07/2026" },
       "DSC": { "atualizado": false, "mes": null }
     }
   },
@@ -229,7 +245,9 @@ ESTRUTURA EXPLICADA:
 
 Para cada filial (DPR, AMS, etc):
 - atualizado: Boolean indicando se está atualizado
-- mes: String com formato YYYY-MM da data de atualização, ou null se não atualizado
+- mes: String com formato MM/AAAA (ex.: "07/2026") da data de atualização,
+  ou null se não atualizado. O ano é sempre o ano corrente do sistema no
+  momento do processamento do arquivo.
 
 ================================================================================
                     8. CONFIGURAÇÃO E INSTALAÇÃO
@@ -269,8 +287,14 @@ O servidor roda por padrão na porta 3001. Para mudar:
      set PORT=3000 (Windows)
      export PORT=3000 (Linux/macOS)
 
-O frontend espera o backend em http://localhost:3001
-Para mudar, edite a URL base em frontend/src/App.jsx
+O frontend descobre o backend pela variável VITE_API_URL, definida no
+arquivo frontend/.env:
+
+   VITE_API_URL=http://localhost:3001
+
+Se a variável não estiver definida, o frontend usa http://localhost:3001
+como fallback. Para apontar para outro backend (ex.: produção), edite o
+arquivo .env e refaça o build. NÃO é mais necessário editar App.jsx.
 
 ================================================================================
                         9. COMO EXECUTAR
@@ -308,21 +332,35 @@ Frontend:
 
 10.1 ADICIONANDO NOVOS ARQUIVOS DE STATUS
 
-Para atualizar o status de uma indústria, coloque um arquivo na pasta "watch":
+Para atualizar o status de uma indústria, coloque um arquivo na pasta "watch".
 
-Formato esperado do nome do arquivo:
-  [INDUSTRIA]_[FILIAL]_[MES-ANO].txt
-  
-Exemplo:
-  NEO_QUIMICA_SMART_DPR_2026-07.txt
-  EUROFARMA_AMS_2026-07.txt
-  CIFARMA_DMT_202607.txt
+Formato esperado do nome do arquivo (tokens separados por ESPAÇO):
 
-Variações suportadas:
-- Com ou sem underscore no final
-- Com ou sem espaços nos nomes
-- Mês/ano em formato YYYY-MM ou YYYYMM
-- O sistema pode processar nomes com aliases
+  [TIPO] [INDUSTRIA] [FILIAIS...] [MES].[ext]
+
+Onde:
+  - TIPO      -> primeira palavra, obrigatória: PRECOS ou PENDENCIAS
+  - INDUSTRIA -> nome da indústria (uma ou mais palavras); aceita aliases
+  - FILIAIS   -> zero ou mais siglas: DPR, AMS, DMT, DMS, DSC
+                 (se NENHUMA filial for citada, TODAS são marcadas)
+  - MES       -> nome do mês por extenso: JANEIRO ... DEZEMBRO
+                 (o ano é sempre o ano corrente do sistema)
+  - ext       -> extensão livre (xlsx, xls, xlsb, etc.)
+
+Exemplos reais:
+  PRECOS 3B JULHO.xlsx
+     -> preços de 3B, TODAS as filiais, mês 07/2026
+  PENDENCIAS EMS MARCAS DMS JULHO.xlsx
+     -> pendências de EMS, apenas filial DMS
+  PRECOS CREMER DPR AMS DMT DMS JULHO.xlsx
+     -> preços de CREMER, filiais DPR/AMS/DMT/DMS (DSC fica pendente)
+
+Regras de parsing:
+  - A primeira palavra DEVE ser PRECOS ou PENDENCIAS, senão o arquivo é
+    ignorado.
+  - Acentos e maiúsculas/minúsculas são normalizados (MARÇO = MARCO).
+  - Se o nome da indústria não bater com a lista (nem com aliases), o
+    sistema cria uma linha nova com codigo = null.
 
 10.2 INTERPRETANDO O PAINEL
 
@@ -374,20 +412,20 @@ Responsável por:
 - Validação de dados
 
 11.4 backend/industries.js
-Contém:
-- Lista de todas as indústrias
-- Códigos numéricos únicos
-- Nomes padrão
-- Aliases para cada indústria
-- Usado para inicialização de seed
+Arquivo LEGADO. Contém uma lista parcial de indústrias com o campo
+"nomePadrao", mas NÃO é importado por nenhum módulo da aplicação. A lista
+efetivamente usada (seed e parsing) está embutida em backend/parser.js.
+Mantido apenas por histórico; pode ser removido com segurança.
 
 11.5 frontend/src/App.jsx
 Componente principal React que:
-- Carrega dados do backend
-- Gerencia o estado com useState
-- Filtra indústrias com useMemo
-- Renderiza a tabela completa
-- Integra WebSocket para atualizações em tempo real
+- Descobre o backend via VITE_API_URL (fallback http://localhost:3001)
+- Carrega dados iniciais via GET /status (axios)
+- Abre conexão Socket.io e escuta o evento "status-atualizado"
+- Atualiza a tabela em tempo real, sem recarregar a página
+- Mantém estado de conexão (● Ao vivo / ○ Offline) com useState
+- Filtra indústrias com useMemo (por nome ou código)
+- Renderiza a tabela completa (preços + pendências por filial)
 
 11.6 frontend/src/App.css
 Estilos da aplicação incluindo:
@@ -440,18 +478,13 @@ BACKEND:
 - "Arquivo processado: [nome do arquivo]"
   → Novo arquivo foi detectado e processado
 
-FRONTEND:
-- "STATUS: [objeto]"
-  → Dados de preços carregados
+FRONTEND (console do navegador):
+- "Erro ao carregar status: [erro]"
+  → Falha na comunicação HTTP inicial com o servidor
 
-- "PENDENCIAS: [objeto]"
-  → Dados de pendências carregados
-
-- "COMBINADO: [objeto]"
-  → Dados combinados prontos para renderização
-
-- "Erro ao carregar status e pendências: [erro]"
-  → Falha na comunicação com servidor
+OBS.: Em condições normais o frontend não emite logs de sucesso no
+console. O estado da conexão WebSocket é mostrado visualmente na barra
+de ferramentas (● Ao vivo / ○ Offline).
 
 ================================================================================
                        14. TROUBLESHOOTING
@@ -480,8 +513,15 @@ SOLUÇÃO:
 
 PROBLEMA: Porta 3001 já está em uso
 SOLUÇÃO:
-- Use PORT=3002 npm run dev (no backend)
-- Atualize URL no frontend (App.jsx)
+- Inicie o backend em outra porta: set PORT=3002 && npm run dev
+- Atualize VITE_API_URL no frontend/.env para a nova porta e reinicie
+  o dev server (ou refaça o build)
+
+PROBLEMA: Painel mostra "○ Offline" e não atualiza sozinho
+SOLUÇÃO:
+- Confirme que o backend está rodando e acessível em VITE_API_URL
+- Verifique o CORS no server.js (origin: "*")
+- Veja o console do navegador (F12) para erros de conexão do Socket.io
 
 PROBLEMA: Socket.io não conecta
 SOLUÇÃO:
@@ -497,13 +537,14 @@ SOLUÇÃO:
 
 1. Abra backend/parser.js
 2. Localize o array INDUSTRIAS
-3. Adicione novo objeto:
+3. Adicione novo objeto (o campo usado é "aliases", não "nomePadrao"):
    {
      codigo: [número único],
      nome: "[NOME_INDUSTRIA]",
-     nomePadrao: "[NOME_PADRAO]",
      aliases: ["[ALIAS1]", "[ALIAS2]"]
    }
+   Use "aliases" para nomes alternativos e erros de digitação comuns que
+   aparecem nos arquivos (ex.: "BUTTERPFLY" -> BUTTERFLY, "KTG" -> KATIGUA).
 4. Reinicie o servidor
 
 15.2 ADICIONANDO NOVA FILIAL
@@ -600,6 +641,37 @@ MELHORIAS TÉCNICAS:
 - Monitoramento e alertas
 
 ================================================================================
+                       18.1 DEPLOY NO RENDER (render.yaml)
+================================================================================
+
+O arquivo render.yaml na raiz define um blueprint com dois serviços:
+
+1. painel-backend (Web Service, runtime node)
+   - rootDir: backend
+   - buildCommand: npm install
+   - startCommand: npm start
+   - healthCheckPath: /health
+   - A porta é fornecida automaticamente pelo Render (server.js lê PORT).
+
+2. painel-frontend (Static Site, runtime static)
+   - rootDir: frontend
+   - buildCommand: npm install && npm run build
+   - staticPublishPath: dist
+   - envVars: VITE_API_URL = https://painel-backend.onrender.com
+   - route rewrite /* -> /index.html (SPA)
+
+PASSOS:
+  1. Suba o repositório para o GitHub.
+  2. No Render, crie um "Blueprint" apontando para o repositório.
+  3. Confirme/ajuste o nome do serviço backend e a URL em VITE_API_URL.
+
+LIMITAÇÕES DO PLANO FREE:
+  - O backend "dorme" após período de inatividade (cold start no 1º acesso).
+  - O disco NÃO é persistente: a pasta watch/ e o status.json são efêmeros.
+    O watcher foi desenhado para rodar localmente ou em servidor com disco
+    fixo; em produção efêmera os dados são perdidos a cada reinício.
+
+================================================================================
                           19. SUPORTE
 ================================================================================
 
@@ -627,8 +699,54 @@ O sistema prioriza:
 
 VERSIONAMENTO:
 Versão 1.0.0 - Versão inicial com funcionalidades básicas
+Versão 1.1.0 - Correções de integração em tempo real, configuração por
+               variável de ambiente, aliases de parsing e blueprint de deploy
 
 ÚLTIMA ATUALIZAÇÃO: 09 de Julho de 2026
+
+================================================================================
+                       21. HISTÓRICO DE ALTERAÇÕES
+================================================================================
+
+VERSÃO 1.1.0 (09/07/2026)
+
+Correções aplicadas após teste de funcionamento completo:
+
+1. FRONTEND - URL DO BACKEND POR VARIÁVEL DE AMBIENTE
+   Antes: a URL http://localhost:3001 estava fixa no código (App.jsx),
+   fazendo o arquivo .env ser ignorado e quebrando o deploy.
+   Agora: usa import.meta.env.VITE_API_URL (fallback localhost:3001).
+
+2. FRONTEND - ATUALIZAÇÃO EM TEMPO REAL (SOCKET.IO)
+   Antes: o backend emitia "status-atualizado", mas o frontend não abria
+   nenhum socket; a tela só carregava uma vez (precisava de F5).
+   Agora: o App.jsx conecta via socket.io-client, escuta o evento e
+   atualiza a tabela automaticamente. Adicionado indicador visual de
+   conexão (● Ao vivo / ○ Offline).
+
+3. PARSER - NOVOS ALIASES
+   Adicionados aliases para nomes que apareciam não reconhecidos nos
+   arquivos reais:
+     - "BUTTERPFLY" (erro de digitação) -> BUTTERFLY (cód. 31)
+     - "KTG" (abreviação)               -> KATIGUA  (cód. 885)
+
+4. DEPLOY - render.yaml
+   Antes: arquivo vazio (0 bytes).
+   Agora: blueprint completo com backend (node) e frontend (static site),
+   incluindo healthcheck e injeção de VITE_API_URL. Ver seção 18.1.
+
+5. DOCUMENTAÇÃO
+   Corrigidas divergências entre este documento e o código real:
+     - Formato dos nomes de arquivo (TIPO + INDUSTRIA + FILIAIS + MES).
+     - Formato do campo "mes": MM/AAAA (ex.: "07/2026"), não YYYY-MM.
+     - Removida referência à rota inexistente /pendencias.
+     - Esclarecido que backend/industries.js é legado e não é usado.
+
+TESTES REALIZADOS:
+   - Parser resolvendo aliases (BUTTERFLY / KATIGUA): OK
+   - Fluxo ponta a ponta arquivo -> watcher -> parser -> socket -> cliente: OK
+   - Lint (oxlint) e build (vite build) do frontend: OK
+   - Backend + frontend rodando juntos e servindo o painel: OK
 
 ================================================================================
                               FIM DA DOCUMENTAÇÃO

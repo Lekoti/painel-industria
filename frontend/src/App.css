@@ -49,8 +49,24 @@ body {
 
 .toolbar {
   display: flex;
+  align-items: center;
+  gap: 12px;
   justify-content: flex-start;
   margin-bottom: 12px;
+}
+
+.status-live {
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-live.on {
+  color: #16a34a;
+}
+
+.status-live.off {
+  color: #9ca3af;
 }
 
 .filter-input {

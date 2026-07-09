@@ -446,24 +446,24 @@
     "ordem": 9,
     "precos": {
       "DPR": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "AMS": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DMT": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DMS": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DSC": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       }
     },
     "pendencias": {
@@ -495,8 +495,8 @@
     "ordem": 10,
     "precos": {
       "DPR": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "AMS": {
         "atualizado": true,
@@ -517,8 +517,8 @@
     },
     "pendencias": {
       "DPR": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "AMS": {
         "atualizado": false,
@@ -544,24 +544,24 @@
     "ordem": 11,
     "precos": {
       "DPR": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "AMS": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DMT": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DMS": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DSC": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       }
     },
     "pendencias": {
@@ -1377,24 +1377,24 @@
     "ordem": 28,
     "precos": {
       "DPR": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "AMS": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DMT": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DMS": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DSC": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       }
     },
     "pendencias": {
@@ -1693,24 +1693,24 @@
     },
     "pendencias": {
       "DPR": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "AMS": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DMT": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DMS": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DSC": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       }
     }
   },
@@ -2264,15 +2264,15 @@
       },
       "AMS": {
         "atualizado": true,
-        "mes": "07/2026"
+        "mes": null
       },
       "DMT": {
         "atualizado": true,
-        "mes": "07/2026"
+        "mes": null
       },
       "DMS": {
         "atualizado": true,
-        "mes": "07/2026"
+        "mes": null
       },
       "DSC": {
         "atualizado": false,
@@ -2896,24 +2896,24 @@
     "ordem": 59,
     "precos": {
       "DPR": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "AMS": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DMT": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DMS": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DSC": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       }
     },
     "pendencias": {
@@ -3288,24 +3288,24 @@
     "ordem": 67,
     "precos": {
       "DPR": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "AMS": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DMT": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DMS": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DSC": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       }
     },
     "pendencias": {
@@ -3386,24 +3386,24 @@
     "ordem": 69,
     "precos": {
       "DPR": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "AMS": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DMT": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DMS": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DSC": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       }
     },
     "pendencias": {
@@ -3484,24 +3484,24 @@
     "ordem": 71,
     "precos": {
       "DPR": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "AMS": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DMT": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DMS": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DSC": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       }
     },
     "pendencias": {
@@ -3737,8 +3737,8 @@
         "mes": null
       },
       "DMT": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DMS": {
         "atualizado": false,
@@ -3759,8 +3759,8 @@
         "mes": null
       },
       "DMT": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DMS": {
         "atualizado": false,
@@ -3827,24 +3827,24 @@
     "ordem": 78,
     "precos": {
       "DPR": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "AMS": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DMT": {
         "atualizado": false,
         "mes": null
       },
       "DMS": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DSC": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       }
     },
     "pendencias": {
@@ -4366,24 +4366,24 @@
     "ordem": 89,
     "precos": {
       "DPR": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "AMS": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DMT": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DMS": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DSC": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       }
     },
     "pendencias": {
@@ -5248,24 +5248,24 @@
     "ordem": 107,
     "precos": {
       "DPR": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "AMS": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DMT": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DMS": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       },
       "DSC": {
-        "atualizado": false,
-        "mes": null
+        "atualizado": true,
+        "mes": "07/2026"
       }
     },
     "pendencias": {
@@ -7128,6 +7128,104 @@
       "DSC": {
         "atualizado": true,
         "mes": "07/2026"
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "E PEND MULTILAB AVVIO AIRELA": {
+    "industria": "E PEND MULTILAB AVVIO AIRELA",
+    "codigo": null,
+    "ordem": 999999,
+    "precos": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    },
+    "pendencias": {
+      "DPR": {
+        "atualizado": false,
+        "mes": null
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
+      }
+    }
+  },
+  "HADASS": {
+    "industria": "HADASS",
+    "codigo": null,
+    "ordem": 999999,
+    "precos": {
+      "DPR": {
+        "atualizado": true,
+        "mes": "07/2026"
+      },
+      "AMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMT": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DMS": {
+        "atualizado": false,
+        "mes": null
+      },
+      "DSC": {
+        "atualizado": false,
+        "mes": null
       }
     },
     "pendencias": {
