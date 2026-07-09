@@ -3,19 +3,25 @@ import axios from "axios";
 import "./App.css";
 
 const FILIAIS = ["DPR", "AMS", "DMT", "DMS", "DSC"];
-const API_URL = "https://painel-industria-backend.onrender.com";
+const API_URL =
+  import.meta.env.VITE_API_URL || "https://painel-industria-backend.onrender.com";
 
 function App() {
   const [dados, setDados] = useState({});
   const [filtroIndustria, setFiltroIndustria] = useState("");
   const [somenteAtualizadas, setSomenteAtualizadas] = useState(false);
+  const [carregando, setCarregando] = useState(true);
 
   async function carregarStatus() {
     try {
+      setCarregando(true);
       const res = await axios.get(`${API_URL}/status`);
       setDados(res.data || {});
     } catch (error) {
       console.error("Erro ao carregar status:", error);
+      setDados({});
+    } finally {
+      setCarregando(false);
     }
   }
 
@@ -56,7 +62,7 @@ function App() {
         <input
           type="text"
           className="filter-input"
-          placeholder="Filtrar indústria..."
+          placeholder="Filtrar indústria ou código..."
           value={filtroIndustria}
           onChange={(e) => setFiltroIndustria(e.target.value)}
         />
@@ -101,7 +107,13 @@ function App() {
           </thead>
 
           <tbody>
-            {linhas.length === 0 ? (
+            {carregando ? (
+              <tr>
+                <td colSpan="11" className="empty">
+                  Carregando dados...
+                </td>
+              </tr>
+            ) : linhas.length === 0 ? (
               <tr>
                 <td colSpan="11" className="empty">
                   Nenhuma indústria encontrada.
@@ -129,6 +141,7 @@ function App() {
                       <td
                         key={`p-${row.industria}-${f}`}
                         className={cell.atualizado ? "ok" : "pending"}
+                        title={cell.atualizado ? `Atualizado ${cell.mes}` : "Não atualizado"}
                       >
                         {cell.atualizado ? `Atualizado ${cell.mes}` : "-"}
                       </td>
@@ -145,6 +158,7 @@ function App() {
                       <td
                         key={`pe-${row.industria}-${f}`}
                         className={cell.atualizado ? "ok" : "pending"}
+                        title={cell.atualizado ? `Atualizado ${cell.mes}` : "Não atualizado"}
                       >
                         {cell.atualizado ? `Atualizado ${cell.mes}` : "-"}
                       </td>
