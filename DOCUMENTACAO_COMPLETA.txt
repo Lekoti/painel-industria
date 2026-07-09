@@ -1,0 +1,635 @@
+================================================================================
+                    PAINEL PREÇO PENDÊNCIA - DOCUMENTAÇÃO COMPLETA
+================================================================================
+
+DATA DE CRIAÇÃO: 09 de Julho de 2026
+VERSÃO DO PROJETO: 1.0.0
+TIPO: Aplicação Full-Stack (React + Node.js + Express)
+
+================================================================================
+                              1. VISÃO GERAL
+================================================================================
+
+O "Painel Preço Pendência" é uma aplicação web full-stack que monitora e gerencia
+o status de atualização de preços e pendências de diferentes indústrias 
+farmacêuticas e fornecedores em cinco filiais diferentes (DPR, AMS, DMT, DMS, DSC).
+
+O sistema funciona como um painel de controle em tempo real, permitindo visualizar
+facilmente quais indústrias têm seus preços e pendências atualizados ou não em
+cada filial.
+
+OBJETIVOS PRINCIPAIS:
+- Monitorar a atualização de preços por filial
+- Rastrear o status de pendências por filial
+- Automatizar a detecção de novos arquivos na pasta de observação
+- Fornecer uma interface visual intuitiva para o acompanhamento
+- Comunicação em tempo real via WebSocket
+
+================================================================================
+                          2. ESTRUTURA DO PROJETO
+================================================================================
+
+painel-preco-pendencia/
+├── backend/                          # Servidor Node.js + API
+│   ├── server.js                     # Arquivo principal do servidor
+│   ├── package.json                  # Dependências e scripts do backend
+│   ├── nodemon.json                  # Configuração do auto-reload em desenvolvimento
+│   ├── watcher.js                    # Sistema de monitoramento de arquivos
+│   ├── parser.js                     # Parser de nomes de arquivos e lógica de parsing
+│   ├── industries.js                 # Lista de todas as indústrias e suas informações
+│   ├── data/
+│   │   └── status.json               # Arquivo JSON com o status atual do sistema
+│   └── watch/                        # Pasta monitorada para novos arquivos
+│
+├── frontend/                         # Aplicação React + Vite
+│   ├── index.html                    # HTML principal
+│   ├── package.json                  # Dependências e scripts do frontend
+│   ├── vite.config.js                # Configuração do Vite
+│   ├── README.md                     # README do template React
+│   ├── public/                       # Arquivos estáticos públicos
+│   ├── src/
+│   │   ├── main.jsx                  # Ponto de entrada da aplicação
+│   │   ├── App.jsx                   # Componente principal da aplicação
+│   │   ├── App.css                   # Estilos da aplicação
+│   │   ├── index.css                 # Estilos globais
+│   │   └── assets/                   # Assets da aplicação (imagens, etc)
+│   └── dist/                         # Pasta de build (gerada após build)
+
+================================================================================
+                          3. TECNOLOGIAS UTILIZADAS
+================================================================================
+
+BACKEND (Node.js):
+- Express.js (v5.2.1) - Framework web para Node.js
+- Socket.io (v4.8.3) - Comunicação em tempo real via WebSocket
+- Chokidar (v5.0.0) - Monitoramento de sistema de arquivos
+- CORS (v2.8.6) - Controle de CORS
+- XLSX (v0.18.5) - Manipulação de arquivos Excel
+- Nodemon (v3.1.14) - Auto-reload em desenvolvimento
+
+FRONTEND (React):
+- React (v19.2.7) - Biblioteca UI
+- React-DOM (v19.2.7) - Renderização no DOM
+- Axios (v1.18.1) - Cliente HTTP
+- Socket.io-client (v4.8.3) - Cliente WebSocket
+- Vite (v8.1.1) - Build tool e dev server
+
+DESENVOLVIMENTO:
+- Oxlint (v1.71.0) - Linter de código JavaScript
+- TypeScript Types - Tipos para React e React-DOM
+
+================================================================================
+                       4. FUNCIONALIDADES PRINCIPAIS
+================================================================================
+
+4.1 BACKEND - FUNCIONALIDADES
+
+A) Sistema de Monitoramento (watcher.js)
+   - Monitora a pasta "watch" para novos arquivos
+   - Detecta automaticamente quando arquivos são adicionados
+   - Processa o nome do arquivo para extrair informações
+   - Atualiza o status em tempo real via WebSocket
+
+B) Parser de Nomes (parser.js)
+   - Extrai informações dos nomes de arquivos
+   - Identifica a indústria do arquivo
+   - Identifica a filial/branch
+   - Extrai mês/ano de atualização
+   - Valida as filiais contra lista pré-definida
+
+C) Gerenciamento de Status (status.json)
+   - Persistência do status de atualização
+   - Inicialização de seed com todas as indústrias
+   - Atualização dinâmica conforme novos arquivos chegam
+   - Rastreamento de mês/ano da última atualização
+
+D) API REST
+   - GET /status - Retorna o status completo do sistema
+   - GET /health - Verifica saúde do servidor
+   - GET /pendencias - Retorna status de pendências
+
+E) WebSocket (Socket.io)
+   - Evento: "status-atualizado" - Emitido quando status muda
+   - Comunicação bidirecional em tempo real
+   - Atualização automática da interface do cliente
+
+4.2 FRONTEND - FUNCIONALIDADES
+
+A) Painel Visual
+   - Tabela com todas as indústrias
+   - Separação de colunas: Preços e Pendências
+   - Colunas por filial (DPR, AMS, DMT, DMS, DSC)
+   - Ordenação automática por ordem definida na indústria
+   - Código numérico da indústria exibido
+
+B) Sistema de Filtro
+   - Filtro em tempo real por nome de indústria
+   - Filtro por código da indústria
+   - Busca case-insensitive
+
+C) Visualização de Status
+   - Célula verde (ok) = Atualizado com mês
+   - Célula vermelha/pending = Não atualizado
+   - Exibe mês/ano da última atualização quando disponível
+
+D) Integração em Tempo Real
+   - Carregamento inicial de dados via HTTP
+   - Atualização dinâmica via WebSocket
+   - Sincronização automática com servidor
+
+================================================================================
+                         5. LISTA DE INDÚSTRIAS
+================================================================================
+
+O sistema monitora 150+ indústrias farmacêuticas e fornecedoras, incluindo:
+
+PRINCIPAIS INDÚSTRIAS:
+- NEO QUIMICA (SMART e GENERICO)
+- LEGRAND (GENERICOS e TARJADOS)
+- TEUTO
+- EMS (standard e GENERICO)
+- EUROFARMA
+- CIFARMA (FARMA e PROPAGANDA MEDICA)
+- GEOLAB
+- MULTILAB
+- KLEY HERTZ
+- NATULAB
+- VITAMEDIC
+- ECOFITUS
+- MAXINUTRI
+- E muitas outras...
+
+CADA INDÚSTRIA POSSUI:
+- Código numérico único (ex: 1, 2, 3, 39, 56, etc)
+- Nome padrão
+- Aliases (nomes alternativos)
+- Ordem de exibição na tabela
+- Status de preços e pendências para cada filial
+
+================================================================================
+                        6. FILIAIS DO SISTEMA
+================================================================================
+
+O sistema monitora 5 filiais principais:
+
+1. DPR  - [Distribuição/Filial 1]
+2. AMS  - [Distribuição/Filial 2]
+3. DMT  - [Distribuição/Filial 3]
+4. DMS  - [Distribuição/Filial 4]
+5. DSC  - [Distribuição/Filial 5]
+
+Cada filial tem seu próprio status para:
+- Preços (atualizado: sim/não, mês de atualização)
+- Pendências (atualizado: sim/não, mês de atualização)
+
+================================================================================
+                    7. ESTRUTURA DE DADOS (status.json)
+================================================================================
+
+Exemplo de estrutura do arquivo data/status.json:
+
+{
+  "NEO QUIMICA SMART": {
+    "industria": "NEO QUIMICA SMART",
+    "codigo": 1,
+    "ordem": 13,
+    "precos": {
+      "DPR": { "atualizado": true, "mes": "2026-07" },
+      "AMS": { "atualizado": true, "mes": "2026-07" },
+      "DMT": { "atualizado": false, "mes": null },
+      "DMS": { "atualizado": true, "mes": "2026-06" },
+      "DSC": { "atualizado": false, "mes": null }
+    },
+    "pendencias": {
+      "DPR": { "atualizado": true, "mes": "2026-07" },
+      "AMS": { "atualizado": false, "mes": null },
+      "DMT": { "atualizado": true, "mes": "2026-07" },
+      "DMS": { "atualizado": true, "mes": "2026-07" },
+      "DSC": { "atualizado": false, "mes": null }
+    }
+  },
+  
+  "EUROFARMA": {
+    "industria": "EUROFARMA",
+    "codigo": 60,
+    "ordem": 4,
+    "precos": { ... },
+    "pendencias": { ... }
+  }
+  
+  // ... mais indústrias
+}
+
+ESTRUTURA EXPLICADA:
+- industria: Nome da indústria
+- codigo: Código numérico único
+- ordem: Ordem de exibição na tabela (0 = primeiro)
+- precos: Objeto com status de preços por filial
+- pendencias: Objeto com status de pendências por filial
+
+Para cada filial (DPR, AMS, etc):
+- atualizado: Boolean indicando se está atualizado
+- mes: String com formato YYYY-MM da data de atualização, ou null se não atualizado
+
+================================================================================
+                    8. CONFIGURAÇÃO E INSTALAÇÃO
+================================================================================
+
+PRÉ-REQUISITOS:
+- Node.js (versão 14 ou superior)
+- npm ou yarn
+- Sistema operacional: Windows, macOS ou Linux
+
+INSTALAÇÃO - BACKEND:
+
+1. Navegue para a pasta backend:
+   cd backend
+
+2. Instale as dependências:
+   npm install
+
+3. Crie a pasta de dados (se não existir):
+   mkdir data
+   mkdir watch
+
+4. Configure o arquivo nodemon.json (já fornecido)
+
+INSTALAÇÃO - FRONTEND:
+
+1. Navegue para a pasta frontend:
+   cd frontend
+
+2. Instale as dependências:
+   npm install
+
+CONFIGURAÇÃO - SERVIDOR:
+
+O servidor roda por padrão na porta 3001. Para mudar:
+   - Defina a variável de ambiente PORT:
+     set PORT=3000 (Windows)
+     export PORT=3000 (Linux/macOS)
+
+O frontend espera o backend em http://localhost:3001
+Para mudar, edite a URL base em frontend/src/App.jsx
+
+================================================================================
+                        9. COMO EXECUTAR
+================================================================================
+
+DESENVOLVIMENTO:
+
+Terminal 1 - Backend:
+  cd backend
+  npm run dev
+  # Servidor rodará em http://localhost:3001
+  # Nodemon ativa auto-reload em mudanças
+
+Terminal 2 - Frontend:
+  cd frontend
+  npm run dev
+  # Interface acessível em http://localhost:5173 (Vite default)
+  # Hot Module Replacement (HMR) habilitado
+
+PRODUÇÃO:
+
+Backend:
+  npm start
+  # Inicia sem nodemon
+
+Frontend:
+  npm run build
+  # Cria pasta dist/ com arquivos otimizados
+  npm run preview
+  # Pré-visualiza o build localmente
+
+================================================================================
+                      10. COMO USAR O SISTEMA
+================================================================================
+
+10.1 ADICIONANDO NOVOS ARQUIVOS DE STATUS
+
+Para atualizar o status de uma indústria, coloque um arquivo na pasta "watch":
+
+Formato esperado do nome do arquivo:
+  [INDUSTRIA]_[FILIAL]_[MES-ANO].txt
+  
+Exemplo:
+  NEO_QUIMICA_SMART_DPR_2026-07.txt
+  EUROFARMA_AMS_2026-07.txt
+  CIFARMA_DMT_202607.txt
+
+Variações suportadas:
+- Com ou sem underscore no final
+- Com ou sem espaços nos nomes
+- Mês/ano em formato YYYY-MM ou YYYYMM
+- O sistema pode processar nomes com aliases
+
+10.2 INTERPRETANDO O PAINEL
+
+Tabela com cabeçalho dividido:
+- Coluna esquerda: Nome e código da indústria
+- Seção central (Preços Ok): Status de preços por filial
+- Seção direita (Pendências Ok): Status de pendências por filial
+
+Cores/Status:
+- Verde (ok): Atualizado em [mês]
+- Vermelho (-): Não atualizado
+- Cinza (empty): Sem dados
+
+10.3 FILTRANDO INDÚSTRIAS
+
+- Use a caixa de filtro no topo da página
+- Digite parte do nome da indústria (ex: "NEO", "FARMA")
+- A busca é case-insensitive
+- A tabela atualiza em tempo real conforme digita
+
+================================================================================
+                      11. ARQUIVOS IMPORTANTES
+================================================================================
+
+11.1 backend/server.js
+Arquivo principal do servidor Express. Responsável por:
+- Inicializar a aplicação Express
+- Configurar CORS
+- Criar servidor HTTP e Socket.io
+- Definir rotas da API
+- Inicializar o watcher
+- Ouvir na porta configurada
+
+11.2 backend/watcher.js
+Sistema de monitoramento que:
+- Observa a pasta "watch" para novos arquivos
+- Detecta adições de arquivos automaticamente
+- Parsa o nome do arquivo
+- Atualiza o status.json
+- Emite eventos WebSocket
+- Mantém a persistência de dados
+
+11.3 backend/parser.js
+Responsável por:
+- Definir filiais válidas
+- Definir meses e seus números
+- Lista completa de indústrias com códigos
+- Função de parsing de nomes de arquivos
+- Validação de dados
+
+11.4 backend/industries.js
+Contém:
+- Lista de todas as indústrias
+- Códigos numéricos únicos
+- Nomes padrão
+- Aliases para cada indústria
+- Usado para inicialização de seed
+
+11.5 frontend/src/App.jsx
+Componente principal React que:
+- Carrega dados do backend
+- Gerencia o estado com useState
+- Filtra indústrias com useMemo
+- Renderiza a tabela completa
+- Integra WebSocket para atualizações em tempo real
+
+11.6 frontend/src/App.css
+Estilos da aplicação incluindo:
+- Layout da tabela
+- Cores de status (verde/vermelho)
+- Estilos de filtro
+- Responsividade
+- Tipografia
+
+================================================================================
+                       12. FLUXO DE DADOS
+================================================================================
+
+FLUXO BÁSICO DE ATUALIZAÇÃO:
+
+1. Arquivo adicionado à pasta "watch"
+   ↓
+2. Chokidar detecta a adição (watcher.js)
+   ↓
+3. Parser extrai info do nome (parser.js)
+   ↓
+4. Status.json é atualizado (watcher.js)
+   ↓
+5. WebSocket emite evento "status-atualizado" (server.js)
+   ↓
+6. Frontend recebe evento e atualiza a tabela em tempo real
+
+FLUXO DE CARREGAMENTO INICIAL:
+
+1. Usuário acessa http://localhost:5173
+   ↓
+2. Frontend faz GET /status (App.jsx)
+   ↓
+3. Backend retorna status.json (server.js)
+   ↓
+4. Frontend combina dados de preços e pendências
+   ↓
+5. Tabela é renderizada com dados iniciais
+   ↓
+6. WebSocket é conectado para atualizações em tempo real
+
+================================================================================
+                       13. MENSAGENS DE LOG
+================================================================================
+
+BACKEND:
+- "Backend rodando em http://localhost:3001"
+  → Servidor iniciou com sucesso
+
+- "Arquivo processado: [nome do arquivo]"
+  → Novo arquivo foi detectado e processado
+
+FRONTEND:
+- "STATUS: [objeto]"
+  → Dados de preços carregados
+
+- "PENDENCIAS: [objeto]"
+  → Dados de pendências carregados
+
+- "COMBINADO: [objeto]"
+  → Dados combinados prontos para renderização
+
+- "Erro ao carregar status e pendências: [erro]"
+  → Falha na comunicação com servidor
+
+================================================================================
+                       14. TROUBLESHOOTING
+================================================================================
+
+PROBLEMA: "Cannot GET /status"
+SOLUÇÃO: Verifique se o backend está rodando em http://localhost:3001
+
+PROBLEMA: Tabela vazia ou dados não carregam
+SOLUÇÃO: 
+- Verifique console do browser (F12) para erros
+- Verifique se backend está respondendo
+- Confirme que data/status.json existe
+
+PROBLEMA: Alterações em arquivo não refletem na interface
+SOLUÇÃO:
+- Verifique que arquivo está na pasta "watch"
+- Confirme que nome do arquivo segue o formato esperado
+- Verifique logs do backend para erros de parse
+
+PROBLEMA: Nodemon não reinicia o servidor
+SOLUÇÃO:
+- Verifique nodemon.json está correto
+- Confirme que arquivo foi salvo (editor salvou)
+- Reinicie o processo manualmente
+
+PROBLEMA: Porta 3001 já está em uso
+SOLUÇÃO:
+- Use PORT=3002 npm run dev (no backend)
+- Atualize URL no frontend (App.jsx)
+
+PROBLEMA: Socket.io não conecta
+SOLUÇÃO:
+- Verifique CORS no server.js
+- Confirme que ambos cliente e servidor usam mesmo protocolo
+- Tente limpar cache do browser
+
+================================================================================
+                       15. DESENVOLVIMENTO
+================================================================================
+
+15.1 ADICIONANDO NOVA INDÚSTRIA
+
+1. Abra backend/parser.js
+2. Localize o array INDUSTRIAS
+3. Adicione novo objeto:
+   {
+     codigo: [número único],
+     nome: "[NOME_INDUSTRIA]",
+     nomePadrao: "[NOME_PADRAO]",
+     aliases: ["[ALIAS1]", "[ALIAS2]"]
+   }
+4. Reinicie o servidor
+
+15.2 ADICIONANDO NOVA FILIAL
+
+1. Abra backend/parser.js
+2. Localize FILIAIS_VALIDAS
+3. Adicione a nova filial ao array
+4. Atualize frontend/src/App.jsx (const FILIAIS)
+5. Reinicie ambos servidor e frontend
+
+15.3 MODIFICANDO ESTRUTURA DE STATUS
+
+1. O arquivo status.json é gerado automaticamente
+2. Para resetar, delete data/status.json
+3. Sistema recria seed automaticamente ao iniciar
+4. Alterações em INDUSTRIAS se propagam na próxima inicialização
+
+15.4 ADICIONANDO NOVAS ROTAS API
+
+No backend/server.js:
+
+app.get("/sua-rota", (req, res) => {
+  res.json({ seu: "dados" });
+});
+
+15.5 CUSTOMIZANDO ESTILOS
+
+Edite frontend/src/App.css para:
+- Mudar cores
+- Ajustar layout
+- Adicionar responsividade
+- Personalizar fontes e espaçamento
+
+================================================================================
+                       16. SEGURANÇA E BOAS PRÁTICAS
+================================================================================
+
+CONSIDERAÇÕES DE SEGURANÇA:
+- CORS está aberto para "*" (alterar em produção)
+- Sem autenticação implementada (adicionar se necessário)
+- Sem validação de entrada robusta (melhorar em produção)
+- Status.json é acessível publicamente
+
+MELHORIAS RECOMENDADAS:
+1. Implementar autenticação JWT
+2. Validar entrada rigorosamente
+3. Implementar rate limiting
+4. Adicionar logging e monitoramento
+5. Usar HTTPS em produção
+6. Restringir CORS para domínios conhecidos
+7. Implementar backup automático de status.json
+8. Adicionar testes unitários e de integração
+
+================================================================================
+                       17. PERFORMANCE
+================================================================================
+
+OTIMIZAÇÕES ATUAIS:
+- Frontend usa useMemo para evitar re-renders desnecessários
+- Filtro de indústria otimizado
+- WebSocket para atualizações eficientes
+- Chokidar monitoramento leve
+
+POSSÍVEIS MELHORIAS:
+- Paginação da tabela para muitas indústrias
+- Virtual scrolling para listas grandes
+- Caching de dados no frontend
+- Compressão de dados transmitidos
+- Otimização de imagens
+
+================================================================================
+                       18. ROADMAP FUTURO
+================================================================================
+
+FUNCIONALIDADES PLANEJADAS:
+- Histórico de atualizações
+- Gráficos de tendências
+- Notificações de atualizações
+- Exportação de dados (CSV, PDF)
+- Permissões de usuários
+- Múltiplos painéis/workspaces
+- API de integração com sistemas externos
+- Dashboard com KPIs
+- Relatórios automáticos
+- Integração com email/Slack
+
+MELHORIAS TÉCNICAS:
+- Migração para TypeScript
+- Banco de dados (substituir JSON)
+- Containerização (Docker)
+- CI/CD pipeline
+- Testes automatizados
+- Documentação API (Swagger)
+- Monitoramento e alertas
+
+================================================================================
+                          19. SUPORTE
+================================================================================
+
+Para problemas ou dúvidas:
+1. Consulte os logs do servidor e navegador
+2. Verifique a pasta "watch" contém arquivos corretos
+3. Confirme que ambos backend e frontend estão rodando
+4. Revise as configurações no arquivo de ambiente
+5. Consulte o section Troubleshooting acima
+
+================================================================================
+                       20. NOTAS FINAIS
+================================================================================
+
+Este projeto é uma solução completa para monitoramento de status de preços
+e pendências em múltiplas filiais. A arquitetura atual é modular e permite
+fácil expansão e customização.
+
+O sistema prioriza:
+- Simplicidade de uso
+- Atualização em tempo real
+- Fácil visualização de status
+- Automatização de processos
+- Escalabilidade
+
+VERSIONAMENTO:
+Versão 1.0.0 - Versão inicial com funcionalidades básicas
+
+ÚLTIMA ATUALIZAÇÃO: 09 de Julho de 2026
+
+================================================================================
+                              FIM DA DOCUMENTAÇÃO
+================================================================================
