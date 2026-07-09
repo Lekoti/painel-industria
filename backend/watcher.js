@@ -3,22 +3,10 @@ const path = require("path");
 const fs = require("fs");
 const { parseNomeArquivo, FILIAIS_VALIDAS, INDUSTRIAS } = require("./parser");
 
-const DATA_DIR = path.join(__dirname, "data");
-const STATUS_PATH = path.join(DATA_DIR, "status.json");
-
-function garantirEstrutura() {
-  if (!fs.existsSync(DATA_DIR)) {
-    fs.mkdirSync(DATA_DIR, { recursive: true });
-  }
-
-  if (!fs.existsSync(STATUS_PATH)) {
-    fs.writeFileSync(STATUS_PATH, "{}", "utf-8");
-  }
-}
+const STATUS_PATH = path.join(__dirname, "data", "status.json");
 
 function carregarStatus() {
-  garantirEstrutura();
-
+  if (!fs.existsSync(STATUS_PATH)) return {};
   try {
     const raw = fs.readFileSync(STATUS_PATH, "utf-8");
     return JSON.parse(raw || "{}");
@@ -28,7 +16,6 @@ function carregarStatus() {
 }
 
 function salvarStatus(status) {
-  garantirEstrutura();
   fs.writeFileSync(STATUS_PATH, JSON.stringify(status, null, 2), "utf-8");
 }
 
@@ -102,93 +89,73 @@ function marcarSomenteFiliais(linha, tipo, filiais, mesAno) {
   });
 }
 
-function aplicarArquivoAoStatus(nomeArquivo, io) {
-  const info = parseNomeArquivo(nomeArquivo);
-
-  if (!info) {
-    return {
-      ok: false,
-      error: `Arquivo ignorado: ${nomeArquivo}`,
-    };
-  }
-
-  const status = carregarStatus();
-
-  if (!status[info.industria]) {
-    const ordemBase = INDUSTRIAS.findIndex((i) => i.nome === info.industria);
-    status[info.industria] = criarLinhaVazia(
-      info.industria,
-      info.codigo ?? null,
-      ordemBase >= 0 ? ordemBase : 999999
-    );
-  }
-
-  const tipo = info.tipo || "precos";
-
-  if (!status[info.industria][tipo]) {
-    status[info.industria][tipo] = {};
-  }
-
-  FILIAIS_VALIDAS.forEach((filial) => {
-    if (!status[info.industria][tipo][filial]) {
-      status[info.industria][tipo][filial] = { atualizado: false, mes: null };
-    }
-  });
-
-  if (info.filiais.length > 0) {
-    marcarSomenteFiliais(status[info.industria], tipo, info.filiais, info.mesAno);
-  } else {
-    marcarTodasFiliais(status[info.industria], tipo, info.mesAno);
-  }
-
-  salvarStatus(status);
-
-  if (io) {
-    io.emit("status-atualizado", status);
-  }
-
-  return {
-    ok: true,
-    nomeArquivo,
-    industria: info.industria,
-    tipo,
-    filiais: info.filiais,
-    mesAno: info.mesAno,
-    status,
-  };
-}
-
 function iniciarWatcher(io) {
   const pastaWatch = path.join(__dirname, "watch");
-
   if (!fs.existsSync(pastaWatch)) {
     fs.mkdirSync(pastaWatch, { recursive: true });
   }
 
-  criarSeedInicial();
+  let status = criarSeedInicial();
 
   const watcher = chokidar.watch(pastaWatch, {
-    persistent: true,
-    ignoreInitial: false,
-    awaitWriteFinish: {
-      stabilityThreshold: 1500,
-      pollInterval: 100,
-    },
-    ignored: [/^\./, /node_modules/],
-  });
+  persistent: true,
+  ignoreInitial: false,
+  awaitWriteFinish: {
+    stabilityThreshold: 1500,
+    pollInterval: 100,
+  },
+  ignored: [
+    /(^|[\/\\])\../,
+    /~\$/,
+  ],
+});
 
   watcher.on("add", (filePath) => {
     const nomeArquivo = path.basename(filePath);
-    const resultado = aplicarArquivoAoStatus(nomeArquivo, io);
+    const info = parseNomeArquivo(nomeArquivo);
 
-    if (!resultado.ok) {
-      console.log(resultado.error);
+    if (!info) {
+      console.log(`Arquivo ignorado: ${nomeArquivo}`);
       return;
     }
 
-    console.log(
-      `Arquivo processado: ${resultado.nomeArquivo} -> ${resultado.industria} (${resultado.tipo})`
-    );
+    if (!status[info.industria]) {
+      const ordemBase = INDUSTRIAS.findIndex((i) => i.nome === info.industria);
+      status[info.industria] = criarLinhaVazia(
+        info.industria,
+        info.codigo ?? null,
+        ordemBase >= 0 ? ordemBase : 999999
+      );
+    }
+
+    const tipo = info.tipo || "precos";
+
+    if (!status[info.industria][tipo]) {
+      status[info.industria][tipo] = {};
+    }
+
+    FILIAIS_VALIDAS.forEach((filial) => {
+      if (!status[info.industria][tipo][filial]) {
+        status[info.industria][tipo][filial] = {
+          atualizado: false,
+          mes: null,
+        };
+      }
+    });
+
+    if (info.filiais.length > 0) {
+      marcarSomenteFiliais(status[info.industria], tipo, info.filiais, info.mesAno);
+    } else {
+      marcarTodasFiliais(status[info.industria], tipo, info.mesAno);
+    }
+
+    salvarStatus(status);
+
+    if (io) {
+      io.emit("status-atualizado", status);
+    }
+
+    console.log(`Arquivo processado: ${nomeArquivo} -> ${info.industria} [${tipo}]`);
   });
 
   return watcher;
@@ -198,5 +165,4 @@ module.exports = {
   iniciarWatcher,
   carregarStatus,
   criarSeedInicial,
-  aplicarArquivoAoStatus,
 };

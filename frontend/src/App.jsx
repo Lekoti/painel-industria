@@ -3,63 +3,38 @@ import axios from "axios";
 import "./App.css";
 
 const FILIAIS = ["DPR", "AMS", "DMT", "DMS", "DSC"];
-const API_URL =
-  import.meta.env.VITE_API_URL || "https://painel-industria-backend.onrender.com";
 
 function App() {
   const [dados, setDados] = useState({});
   const [filtroIndustria, setFiltroIndustria] = useState("");
-  const [somenteAtualizadas, setSomenteAtualizadas] = useState(false);
-  const [carregando, setCarregando] = useState(true);
-  const [erro, setErro] = useState("");
 
   useEffect(() => {
     async function carregar() {
       try {
-        setCarregando(true);
-        setErro("");
-
-        const res = await axios.get(`${API_URL}/status`);
-        setDados(res.data && typeof res.data === "object" ? res.data : {});
+        const res = await axios.get("http://localhost:3001/status");
+        console.log("STATUS:", res.data);
+        setDados(res.data || {});
       } catch (error) {
         console.error("Erro ao carregar status:", error);
-        setErro("Erro ao carregar dados do backend.");
-        setDados({});
-      } finally {
-        setCarregando(false);
       }
     }
 
     carregar();
   }, []);
 
-  function temAlgumaAtualizacao(row) {
-    const temPreco = FILIAIS.some((f) => row?.precos?.[f]?.atualizado);
-    const temPendencia = FILIAIS.some((f) => row?.pendencias?.[f]?.atualizado);
-    return temPreco || temPendencia;
-  }
-
   const linhas = useMemo(() => {
-    const listaBase = Array.isArray(dados) ? dados : Object.values(dados || {});
-    let lista = [...listaBase].sort(
+    const lista = Object.values(dados).sort(
       (a, b) => (a?.ordem ?? 999999) - (b?.ordem ?? 999999)
     );
 
     const termo = filtroIndustria.trim().toLowerCase();
+    if (!termo) return lista;
 
-    if (termo) {
-      lista = lista.filter((row) => {
-        const texto = `${row?.industria ?? ""} ${row?.codigo ?? ""}`.toLowerCase();
-        return texto.includes(termo);
-      });
-    }
-
-    if (somenteAtualizadas) {
-      lista = lista.filter((row) => temAlgumaAtualizacao(row));
-    }
-
-    return lista;
-  }, [dados, filtroIndustria, somenteAtualizadas]);
+    return lista.filter((row) => {
+      const texto = `${row.industria ?? ""} ${row.codigo ?? ""}`.toLowerCase();
+      return texto.includes(termo);
+    });
+  }, [dados, filtroIndustria]);
 
   return (
     <div className="page">
@@ -67,20 +42,10 @@ function App() {
         <input
           type="text"
           className="filter-input"
-          placeholder="Filtrar indústria ou código..."
+          placeholder="Filtrar indústria..."
           value={filtroIndustria}
           onChange={(e) => setFiltroIndustria(e.target.value)}
         />
-
-        <button
-          type="button"
-          className={`filter-toggle-btn ${somenteAtualizadas ? "active" : ""}`}
-          onClick={() => setSomenteAtualizadas((prev) => !prev)}
-        >
-          {somenteAtualizadas
-            ? "Mostrando só atualizadas"
-            : "Mostrar só atualizadas"}
-        </button>
       </div>
 
       <div className="table-wrap">
@@ -112,45 +77,33 @@ function App() {
           </thead>
 
           <tbody>
-            {carregando ? (
-              <tr>
-                <td colSpan="11" className="empty">
-                  Carregando dados...
-                </td>
-              </tr>
-            ) : erro ? (
-              <tr>
-                <td colSpan="11" className="empty">
-                  {erro}
-                </td>
-              </tr>
-            ) : linhas.length === 0 ? (
+            {linhas.length === 0 ? (
               <tr>
                 <td colSpan="11" className="empty">
                   Nenhuma indústria encontrada.
                 </td>
               </tr>
             ) : (
-              linhas.map((row, index) => (
-                <tr key={row?.codigo ?? row?.industria ?? index}>
+              linhas.map((row) => (
+                <tr key={row.codigo ?? row.industria}>
                   <td className="col-industria body-industria">
                     <div className="industry-inline">
-                      <span className="industry-name">{row?.industria ?? "-"}</span>
-                      {row?.codigo != null && (
+                      <span className="industry-name">{row.industria}</span>
+                      {row.codigo != null && (
                         <span className="industry-code">#{row.codigo}</span>
                       )}
                     </div>
                   </td>
 
                   {FILIAIS.map((f) => {
-                    const cell = row?.precos?.[f] || {
+                    const cell = row.precos?.[f] || {
                       atualizado: false,
                       mes: null,
                     };
 
                     return (
                       <td
-                        key={`p-${row?.industria ?? index}-${f}`}
+                        key={`p-${row.industria}-${f}`}
                         className={cell.atualizado ? "ok" : "pending"}
                       >
                         {cell.atualizado ? `Atualizado ${cell.mes}` : "-"}
@@ -159,14 +112,14 @@ function App() {
                   })}
 
                   {FILIAIS.map((f) => {
-                    const cell = row?.pendencias?.[f] || {
+                    const cell = row.pendencias?.[f] || {
                       atualizado: false,
                       mes: null,
                     };
 
                     return (
                       <td
-                        key={`pe-${row?.industria ?? index}-${f}`}
+                        key={`pe-${row.industria}-${f}`}
                         className={cell.atualizado ? "ok" : "pending"}
                       >
                         {cell.atualizado ? `Atualizado ${cell.mes}` : "-"}
