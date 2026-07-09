@@ -11,14 +11,18 @@ function App() {
   const [filtroIndustria, setFiltroIndustria] = useState("");
   const [somenteAtualizadas, setSomenteAtualizadas] = useState(false);
   const [carregando, setCarregando] = useState(true);
+  const [erro, setErro] = useState("");
 
   async function carregarStatus() {
     try {
       setCarregando(true);
+      setErro("");
       const res = await axios.get(`${API_URL}/status`);
-      setDados(res.data || {});
+      console.log("STATUS RECEBIDO:", res.data);
+      setDados(res.data && typeof res.data === "object" ? res.data : {});
     } catch (error) {
       console.error("Erro ao carregar status:", error);
+      setErro("Não foi possível carregar os dados do painel.");
       setDados({});
     } finally {
       setCarregando(false);
@@ -30,13 +34,15 @@ function App() {
   }, []);
 
   function temAlgumaAtualizacao(row) {
-    const temPreco = FILIAIS.some((f) => row.precos?.[f]?.atualizado);
-    const temPendencia = FILIAIS.some((f) => row.pendencias?.[f]?.atualizado);
+    const temPreco = FILIAIS.some((f) => row?.precos?.[f]?.atualizado);
+    const temPendencia = FILIAIS.some((f) => row?.pendencias?.[f]?.atualizado);
     return temPreco || temPendencia;
   }
 
   const linhas = useMemo(() => {
-    let lista = Object.values(dados).sort(
+    const listaBase = Array.isArray(dados) ? dados : Object.values(dados || {});
+
+    let lista = listaBase.sort(
       (a, b) => (a?.ordem ?? 999999) - (b?.ordem ?? 999999)
     );
 
@@ -44,7 +50,7 @@ function App() {
 
     if (termo) {
       lista = lista.filter((row) => {
-        const texto = `${row.industria ?? ""} ${row.codigo ?? ""}`.toLowerCase();
+        const texto = `${row?.industria ?? ""} ${row?.codigo ?? ""}`.toLowerCase();
         return texto.includes(termo);
       });
     }
@@ -113,6 +119,12 @@ function App() {
                   Carregando dados...
                 </td>
               </tr>
+            ) : erro ? (
+              <tr>
+                <td colSpan="11" className="empty">
+                  {erro}
+                </td>
+              </tr>
             ) : linhas.length === 0 ? (
               <tr>
                 <td colSpan="11" className="empty">
@@ -124,7 +136,7 @@ function App() {
                 <tr key={row.codigo ?? row.industria}>
                   <td className="col-industria body-industria">
                     <div className="industry-inline">
-                      <span className="industry-name">{row.industria}</span>
+                      <span className="industry-name">{row.industria ?? "-"}</span>
                       {row.codigo != null && (
                         <span className="industry-code">#{row.codigo}</span>
                       )}
@@ -132,7 +144,7 @@ function App() {
                   </td>
 
                   {FILIAIS.map((f) => {
-                    const cell = row.precos?.[f] || {
+                    const cell = row?.precos?.[f] || {
                       atualizado: false,
                       mes: null,
                     };
@@ -141,7 +153,6 @@ function App() {
                       <td
                         key={`p-${row.industria}-${f}`}
                         className={cell.atualizado ? "ok" : "pending"}
-                        title={cell.atualizado ? `Atualizado ${cell.mes}` : "Não atualizado"}
                       >
                         {cell.atualizado ? `Atualizado ${cell.mes}` : "-"}
                       </td>
@@ -149,7 +160,7 @@ function App() {
                   })}
 
                   {FILIAIS.map((f) => {
-                    const cell = row.pendencias?.[f] || {
+                    const cell = row?.pendencias?.[f] || {
                       atualizado: false,
                       mes: null,
                     };
@@ -158,7 +169,6 @@ function App() {
                       <td
                         key={`pe-${row.industria}-${f}`}
                         className={cell.atualizado ? "ok" : "pending"}
-                        title={cell.atualizado ? `Atualizado ${cell.mes}` : "Não atualizado"}
                       >
                         {cell.atualizado ? `Atualizado ${cell.mes}` : "-"}
                       </td>
