@@ -9,7 +9,7 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:3000",
-  "https://SEU-FRONTEND.onrender.com",
+  "https://SEU-FRONTEND-REAL.onrender.com",
 ];
 
 app.use(
@@ -28,6 +28,14 @@ const io = new Server(server, {
     origin: allowedOrigins,
     methods: ["GET", "POST"],
   },
+});
+
+app.get("/", (req, res) => {
+  res.json({
+    ok: true,
+    message: "Backend online",
+    endpoints: ["/health", "/status"],
+  });
 });
 
 app.get("/status", (req, res) => {
