@@ -2,7 +2,12 @@ const express = require("express");
 const cors = require("cors");
 const http = require("http");
 const { Server } = require("socket.io");
-const { iniciarWatcher, carregarStatus, criarSeedInicial } = require("./watcher");
+const {
+  iniciarWatcher,
+  criarSeedInicial,
+  carregarStatus,
+  getPaths,
+} = require("./watcher");
 
 const app = express();
 app.use(cors());
@@ -17,16 +22,38 @@ const io = new Server(server, {
   },
 });
 
+let statusAtual = criarSeedInicial();
+
 app.get("/status", (req, res) => {
-  res.json(carregarStatus());
+  res.json(statusAtual);
 });
 
 app.get("/health", (req, res) => {
-  res.json({ ok: true });
+  res.json({
+    ok: true,
+    industrias: Object.keys(statusAtual || {}).length,
+  });
 });
 
-criarSeedInicial();
-iniciarWatcher(io);
+app.get("/debug", (req, res) => {
+  const statusDisco = carregarStatus();
+  const paths = getPaths();
+
+  res.json({
+    ok: true,
+    memoria: Object.keys(statusAtual || {}).length,
+    disco: Object.keys(statusDisco || {}).length,
+    socketClientes: io.engine.clientsCount,
+    paths,
+    ambiente: process.env.NODE_ENV || "development",
+  });
+});
+
+iniciarWatcher(io, {
+  onStatusChange: (novoStatus) => {
+    statusAtual = novoStatus;
+  },
+});
 
 const PORTA = process.env.PORT || 3001;
 
