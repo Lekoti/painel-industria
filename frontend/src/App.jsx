@@ -13,24 +13,24 @@ function App() {
   const [carregando, setCarregando] = useState(true);
   const [erro, setErro] = useState("");
 
-  async function carregarStatus() {
-    try {
-      setCarregando(true);
-      setErro("");
-      const res = await axios.get(`${API_URL}/status`);
-      console.log("STATUS RECEBIDO:", res.data);
-      setDados(res.data && typeof res.data === "object" ? res.data : {});
-    } catch (error) {
-      console.error("Erro ao carregar status:", error);
-      setErro("Não foi possível carregar os dados do painel.");
-      setDados({});
-    } finally {
-      setCarregando(false);
-    }
-  }
-
   useEffect(() => {
-    carregarStatus();
+    async function carregar() {
+      try {
+        setCarregando(true);
+        setErro("");
+
+        const res = await axios.get(`${API_URL}/status`);
+        setDados(res.data && typeof res.data === "object" ? res.data : {});
+      } catch (error) {
+        console.error("Erro ao carregar status:", error);
+        setErro("Erro ao carregar dados do backend.");
+        setDados({});
+      } finally {
+        setCarregando(false);
+      }
+    }
+
+    carregar();
   }, []);
 
   function temAlgumaAtualizacao(row) {
@@ -41,8 +41,7 @@ function App() {
 
   const linhas = useMemo(() => {
     const listaBase = Array.isArray(dados) ? dados : Object.values(dados || {});
-
-    let lista = listaBase.sort(
+    let lista = [...listaBase].sort(
       (a, b) => (a?.ordem ?? 999999) - (b?.ordem ?? 999999)
     );
 
@@ -132,12 +131,12 @@ function App() {
                 </td>
               </tr>
             ) : (
-              linhas.map((row) => (
-                <tr key={row.codigo ?? row.industria}>
+              linhas.map((row, index) => (
+                <tr key={row?.codigo ?? row?.industria ?? index}>
                   <td className="col-industria body-industria">
                     <div className="industry-inline">
-                      <span className="industry-name">{row.industria ?? "-"}</span>
-                      {row.codigo != null && (
+                      <span className="industry-name">{row?.industria ?? "-"}</span>
+                      {row?.codigo != null && (
                         <span className="industry-code">#{row.codigo}</span>
                       )}
                     </div>
@@ -151,7 +150,7 @@ function App() {
 
                     return (
                       <td
-                        key={`p-${row.industria}-${f}`}
+                        key={`p-${row?.industria ?? index}-${f}`}
                         className={cell.atualizado ? "ok" : "pending"}
                       >
                         {cell.atualizado ? `Atualizado ${cell.mes}` : "-"}
@@ -167,7 +166,7 @@ function App() {
 
                     return (
                       <td
-                        key={`pe-${row.industria}-${f}`}
+                        key={`pe-${row?.industria ?? index}-${f}`}
                         className={cell.atualizado ? "ok" : "pending"}
                       >
                         {cell.atualizado ? `Atualizado ${cell.mes}` : "-"}
