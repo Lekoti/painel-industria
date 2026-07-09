@@ -9,9 +9,6 @@ function App() {
   const [dados, setDados] = useState({});
   const [filtroIndustria, setFiltroIndustria] = useState("");
   const [somenteAtualizadas, setSomenteAtualizadas] = useState(false);
-  const [arquivo, setArquivo] = useState(null);
-  const [enviando, setEnviando] = useState(false);
-  const [mensagemUpload, setMensagemUpload] = useState("");
 
   async function carregarStatus() {
     try {
@@ -25,46 +22,6 @@ function App() {
   useEffect(() => {
     carregarStatus();
   }, []);
-
-  async function enviarArquivo() {
-    if (!arquivo) {
-      setMensagemUpload("Selecione um arquivo primeiro.");
-      return;
-    }
-
-    try {
-      setEnviando(true);
-      setMensagemUpload("");
-
-      const formData = new FormData();
-      formData.append("arquivo", arquivo);
-
-      const res = await axios.post(`${API_URL}/upload`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-
-      setMensagemUpload(
-        res.data?.message || "Arquivo enviado e processado com sucesso."
-      );
-      setArquivo(null);
-
-      const input = document.getElementById("input-upload-arquivo");
-      if (input) input.value = "";
-
-      await carregarStatus();
-    } catch (error) {
-      const msg =
-        error?.response?.data?.error ||
-        error?.response?.data?.message ||
-        "Erro ao enviar arquivo.";
-      setMensagemUpload(msg);
-      console.error("Erro no upload:", error);
-    } finally {
-      setEnviando(false);
-    }
-  }
 
   function temAlgumaAtualizacao(row) {
     const temPreco = FILIAIS.some((f) => row.precos?.[f]?.atualizado);
@@ -94,8 +51,7 @@ function App() {
   }, [dados, filtroIndustria, somenteAtualizadas]);
 
   return (
-  <div className="page">
-    <h1 style={{ color: "red", fontSize: "32px" }}>TESTE NOVO FRONTEND</h1>
+    <div className="page">
       <div className="toolbar">
         <input
           type="text"
@@ -114,35 +70,15 @@ function App() {
             ? "Mostrando só atualizadas"
             : "Mostrar só atualizadas"}
         </button>
-      </div>
-
-      <div className="upload-bar">
-        <input
-          id="input-upload-arquivo"
-          type="file"
-          onChange={(e) => setArquivo(e.target.files?.[0] || null)}
-        />
-
-        <button
-          type="button"
-          className="upload-btn"
-          onClick={enviarArquivo}
-          disabled={enviando}
-        >
-          {enviando ? "Enviando..." : "Enviar arquivo"}
-        </button>
 
         <button
           type="button"
           className="refresh-btn"
           onClick={carregarStatus}
-          disabled={enviando}
         >
           Atualizar painel
         </button>
       </div>
-
-      {mensagemUpload ? <div className="upload-message">{mensagemUpload}</div> : null}
 
       <div className="table-wrap">
         <table className="painel">
