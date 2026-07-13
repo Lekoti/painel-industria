@@ -112,16 +112,32 @@ function recalcularStatusCompleto() {
   return status;
 }
 
-function iniciarWatcher(io) {
+function getPaths() {
+  return {
+    statusPath: STATUS_PATH,
+    watchPath: WATCH_PATH,
+  };
+}
+
+function iniciarWatcher(io, options = {}) {
   if (!fs.existsSync(WATCH_PATH)) {
     fs.mkdirSync(WATCH_PATH, { recursive: true });
   }
 
+  const { onStatusChange } = options;
   let timeoutRebuild = null;
 
   const emitirStatusAtualizado = () => {
     const status = recalcularStatusCompleto();
-    if (io) io.emit("status-atualizado", status);
+
+    if (typeof onStatusChange === "function") {
+      onStatusChange(status);
+    }
+
+    if (io) {
+      io.emit("status-atualizado", status);
+    }
+
     console.log("Status recalculado com sucesso.");
   };
 
@@ -132,7 +148,7 @@ function iniciarWatcher(io) {
     }, 1200);
   };
 
-  recalcularStatusCompleto();
+  emitirStatusAtualizado();
 
   const watcher = chokidar.watch(WATCH_PATH, {
     persistent: true,
@@ -175,4 +191,5 @@ module.exports = {
   iniciarWatcher,
   carregarStatus,
   criarSeedInicial: recalcularStatusCompleto,
+  getPaths,
 };
