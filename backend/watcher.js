@@ -18,6 +18,13 @@ function carregarStatus() {
 }
 
 function salvarStatus(status) {
+  // Garante que a pasta "data" existe antes de gravar o arquivo
+  const dir = path.dirname(STATUS_PATH);
+
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+
   fs.writeFileSync(STATUS_PATH, JSON.stringify(status, null, 2), "utf-8");
 }
 
@@ -80,7 +87,7 @@ function marcarTodasFiliais(linha, tipo, mesAno) {
 
 function marcarSomenteFiliais(linha, tipo, filiais, mesAno) {
   filiais.forEach((filial) => {
-    definirCelula(linha, tipo, filial, mesAno);
+    definirCelula(linha, tipo, filiais, mesAno);
   });
 }
 
