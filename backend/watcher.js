@@ -1,48 +1,22 @@
 const chokidar = require("chokidar");
 const path = require("path");
 const fs = require("fs");
-const { parseNomeArquivo, FILIAIS_VALIDAS, INDUSTRIAS } = require("./parser");
+const { parseNomeArquivo, FILIAISVALIDAS, INDUSTRIAS } = require("./parser");
 
-const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, "data");
-const WATCH_DIR = process.env.WATCH_DIR || path.join(__dirname, "watch");
-const STATUS_PATH = process.env.STATUS_PATH || path.join(DATA_DIR, "status.json");
-
-function getPaths() {
-  return {
-    DATA_DIR,
-    WATCH_DIR,
-    STATUS_PATH,
-  };
-}
-
-function garantirEstrutura() {
-  if (!fs.existsSync(DATA_DIR)) {
-    fs.mkdirSync(DATA_DIR, { recursive: true });
-  }
-
-  if (!fs.existsSync(WATCH_DIR)) {
-    fs.mkdirSync(WATCH_DIR, { recursive: true });
-  }
-
-  if (!fs.existsSync(STATUS_PATH)) {
-    fs.writeFileSync(STATUS_PATH, "{}", "utf-8");
-  }
-}
+const STATUS_PATH = path.join(__dirname, "data", "status.json");
+const WATCH_PATH = path.join(__dirname, "watch");
 
 function carregarStatus() {
-  garantirEstrutura();
-
+  if (!fs.existsSync(STATUS_PATH)) return {};
   try {
     const raw = fs.readFileSync(STATUS_PATH, "utf-8");
-    return JSON.parse(raw || "{}");
-  } catch (error) {
-    console.error("Erro ao ler status.json:", error);
+    return JSON.parse(raw);
+  } catch {
     return {};
   }
 }
 
 function salvarStatus(status) {
-  garantirEstrutura();
   fs.writeFileSync(STATUS_PATH, JSON.stringify(status, null, 2), "utf-8");
 }
 
@@ -55,7 +29,7 @@ function criarLinhaVazia(industria, codigo, ordem) {
     pendencias: {},
   };
 
-  FILIAIS_VALIDAS.forEach((filial) => {
+  FILIAISVALIDAS.forEach((filial) => {
     linha.precos[filial] = { atualizado: false, mes: null };
     linha.pendencias[filial] = { atualizado: false, mes: null };
   });
@@ -63,7 +37,7 @@ function criarLinhaVazia(industria, codigo, ordem) {
   return linha;
 }
 
-function criarStatusBase() {
+function criarSeedInicial() {
   const status = {};
 
   INDUSTRIAS.forEach((item, index) => {
@@ -73,14 +47,25 @@ function criarStatusBase() {
   return status;
 }
 
-function criarSeedInicial() {
-  const status = criarStatusBase();
-  salvarStatus(status);
-  return status;
+function garantirLinha(status, info) {
+  if (!status[info.industria]) {
+    const ordemBase = INDUSTRIAS.findIndex((i) => i.nome === info.industria);
+    status[info.industria] = criarLinhaVazia(
+      info.industria,
+      info.codigo ?? null,
+      ordemBase >= 0 ? ordemBase : 999999
+    );
+  }
+
+  if (info.codigo != null && !status[info.industria].codigo) {
+    status[info.industria].codigo = info.codigo;
+  }
+
+  return status[info.industria];
 }
 
 function marcarTodasFiliais(linha, tipo, mesAno) {
-  FILIAIS_VALIDAS.forEach((filial) => {
+  FILIAISVALIDAS.forEach((filial) => {
     linha[tipo][filial] = { atualizado: true, mes: mesAno };
   });
 }
@@ -91,44 +76,34 @@ function marcarSomenteFiliais(linha, tipo, filiais, mesAno) {
   });
 }
 
-function montarStatusAPartirDosArquivos() {
-  garantirEstrutura();
+function listarArquivosDaPasta(dir) {
+  if (!fs.existsSync(dir)) return [];
+  return fs
+    .readdirSync(dir, { withFileTypes: true })
+    .filter((entry) => entry.isFile())
+    .map((entry) => path.join(dir, entry.name));
+}
 
-  const status = criarStatusBase();
-  const arquivos = fs.readdirSync(WATCH_DIR);
+function recalcularStatusCompleto() {
+  const status = criarSeedInicial();
+  const arquivos = listarArquivosDaPasta(WATCH_PATH);
 
-  arquivos.forEach((nomeArquivo) => {
-    const caminhoCompleto = path.join(WATCH_DIR, nomeArquivo);
-
-    try {
-      const stat = fs.statSync(caminhoCompleto);
-      if (!stat.isFile()) return;
-    } catch (error) {
-      return;
-    }
-
+  arquivos.forEach((filePath) => {
+    const nomeArquivo = path.basename(filePath);
     const info = parseNomeArquivo(nomeArquivo);
 
     if (!info) {
+      console.log("Arquivo ignorado:", nomeArquivo);
       return;
     }
 
-    if (!status[info.industria]) {
-      const ordemBase = INDUSTRIAS.findIndex((i) => i.nome === info.industria);
-
-      status[info.industria] = criarLinhaVazia(
-        info.industria,
-        info.codigo ?? null,
-        ordemBase >= 0 ? ordemBase : 999999
-      );
-    }
-
+    const linha = garantirLinha(status, info);
     const tipo = info.tipo || "precos";
 
     if (info.filiais.length > 0) {
-      marcarSomenteFiliais(status[info.industria], tipo, info.filiais, info.mesAno);
+      marcarSomenteFiliais(linha, tipo, info.filiais, info.mesAno);
     } else {
-      marcarTodasFiliais(status[info.industria], tipo, info.mesAno);
+      marcarTodasFiliais(linha, tipo, info.mesAno);
     }
   });
 
@@ -136,52 +111,59 @@ function montarStatusAPartirDosArquivos() {
   return status;
 }
 
-function iniciarWatcher(io, options = {}) {
-  const { onStatusChange } = options;
-
-  garantirEstrutura();
-
-  let status = montarStatusAPartirDosArquivos();
-
-  if (onStatusChange) {
-    onStatusChange(status);
+function iniciarWatcher(io) {
+  if (!fs.existsSync(WATCH_PATH)) {
+    fs.mkdirSync(WATCH_PATH, { recursive: true });
   }
 
-  console.log("Monitorando pasta:", WATCH_DIR);
-  console.log("Salvando status em:", STATUS_PATH);
+  let timeoutRebuild = null;
 
-  const watcher = chokidar.watch(WATCH_DIR, {
+  const emitirStatusAtualizado = () => {
+    const status = recalcularStatusCompleto();
+    if (io) {
+      io.emit("status-atualizado", status);
+    }
+    console.log("Status recalculado com sucesso.");
+  };
+
+  const reagendarRebuild = () => {
+    if (timeoutRebuild) clearTimeout(timeoutRebuild);
+    timeoutRebuild = setTimeout(() => {
+      emitirStatusAtualizado();
+    }, 1200);
+  };
+
+  recalcularStatusCompleto();
+
+  const watcher = chokidar.watch(WATCH_PATH, {
     persistent: true,
     ignoreInitial: false,
     awaitWriteFinish: {
       stabilityThreshold: 1500,
       pollInterval: 100,
     },
-    ignored: [/(^|[\/\\])\../, /~\$/],
+    ignored: /(^|[\/\\])\../,
   });
 
-  function recalcularStatus(motivo, filePath) {
-    try {
-      status = montarStatusAPartirDosArquivos();
+  watcher.on("add", (filePath) => {
+    console.log("Arquivo adicionado:", path.basename(filePath));
+    reagendarRebuild();
+  });
 
-      if (onStatusChange) {
-        onStatusChange(status);
-      }
+  watcher.on("change", (filePath) => {
+    console.log("Arquivo alterado:", path.basename(filePath));
+    reagendarRebuild();
+  });
 
-      if (io) {
-        io.emit("status-atualizado", status);
-      }
+  watcher.on("unlink", (filePath) => {
+    console.log("Arquivo removido:", path.basename(filePath));
+    reagendarRebuild();
+  });
 
-      const nomeArquivo = filePath ? path.basename(filePath) : "(sem arquivo)";
-      console.log(`Status recalculado por ${motivo}: ${nomeArquivo}`);
-    } catch (error) {
-      console.error(`Erro ao recalcular status em ${motivo}:`, error);
-    }
-  }
-
-  watcher.on("add", (filePath) => recalcularStatus("add", filePath));
-  watcher.on("change", (filePath) => recalcularStatus("change", filePath));
-  watcher.on("unlink", (filePath) => recalcularStatus("unlink", filePath));
+  watcher.on("ready", () => {
+    console.log("Watcher pronto.");
+    reagendarRebuild();
+  });
 
   watcher.on("error", (error) => {
     console.error("Erro no watcher:", error);
@@ -193,6 +175,5 @@ function iniciarWatcher(io, options = {}) {
 module.exports = {
   iniciarWatcher,
   carregarStatus,
-  criarSeedInicial,
-  getPaths,
+  criarSeedInicial: recalcularStatusCompleto,
 };
