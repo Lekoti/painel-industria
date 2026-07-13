@@ -63,54 +63,19 @@ function criarLinhaVazia(industria, codigo, ordem) {
   return linha;
 }
 
-function criarSeedInicial() {
-  const status = carregarStatus();
-  let alterou = false;
+function criarStatusBase() {
+  const status = {};
 
   INDUSTRIAS.forEach((item, index) => {
-    if (!status[item.nome]) {
-      status[item.nome] = criarLinhaVazia(item.nome, item.codigo, index);
-      alterou = true;
-      return;
-    }
-
-    if (status[item.nome].codigo !== item.codigo) {
-      status[item.nome].codigo = item.codigo;
-      alterou = true;
-    }
-
-    if (status[item.nome].ordem !== index) {
-      status[item.nome].ordem = index;
-      alterou = true;
-    }
-
-    if (!status[item.nome].precos) {
-      status[item.nome].precos = {};
-      alterou = true;
-    }
-
-    if (!status[item.nome].pendencias) {
-      status[item.nome].pendencias = {};
-      alterou = true;
-    }
-
-    FILIAIS_VALIDAS.forEach((filial) => {
-      if (!status[item.nome].precos[filial]) {
-        status[item.nome].precos[filial] = { atualizado: false, mes: null };
-        alterou = true;
-      }
-
-      if (!status[item.nome].pendencias[filial]) {
-        status[item.nome].pendencias[filial] = { atualizado: false, mes: null };
-        alterou = true;
-      }
-    });
+    status[item.nome] = criarLinhaVazia(item.nome, item.codigo, index);
   });
 
-  if (alterou) {
-    salvarStatus(status);
-  }
+  return status;
+}
 
+function criarSeedInicial() {
+  const status = criarStatusBase();
+  salvarStatus(status);
   return status;
 }
 
@@ -126,12 +91,57 @@ function marcarSomenteFiliais(linha, tipo, filiais, mesAno) {
   });
 }
 
+function montarStatusAPartirDosArquivos() {
+  garantirEstrutura();
+
+  const status = criarStatusBase();
+  const arquivos = fs.readdirSync(WATCH_DIR);
+
+  arquivos.forEach((nomeArquivo) => {
+    const caminhoCompleto = path.join(WATCH_DIR, nomeArquivo);
+
+    try {
+      const stat = fs.statSync(caminhoCompleto);
+      if (!stat.isFile()) return;
+    } catch (error) {
+      return;
+    }
+
+    const info = parseNomeArquivo(nomeArquivo);
+
+    if (!info) {
+      return;
+    }
+
+    if (!status[info.industria]) {
+      const ordemBase = INDUSTRIAS.findIndex((i) => i.nome === info.industria);
+
+      status[info.industria] = criarLinhaVazia(
+        info.industria,
+        info.codigo ?? null,
+        ordemBase >= 0 ? ordemBase : 999999
+      );
+    }
+
+    const tipo = info.tipo || "precos";
+
+    if (info.filiais.length > 0) {
+      marcarSomenteFiliais(status[info.industria], tipo, info.filiais, info.mesAno);
+    } else {
+      marcarTodasFiliais(status[info.industria], tipo, info.mesAno);
+    }
+  });
+
+  salvarStatus(status);
+  return status;
+}
+
 function iniciarWatcher(io, options = {}) {
   const { onStatusChange } = options;
 
   garantirEstrutura();
 
-  let status = criarSeedInicial();
+  let status = montarStatusAPartirDosArquivos();
 
   if (onStatusChange) {
     onStatusChange(status);
@@ -150,58 +160,28 @@ function iniciarWatcher(io, options = {}) {
     ignored: [/(^|[\/\\])\../, /~\$/],
   });
 
-  watcher.on("add", (filePath) => {
-    const nomeArquivo = path.basename(filePath);
-    const info = parseNomeArquivo(nomeArquivo);
+  function recalcularStatus(motivo, filePath) {
+    try {
+      status = montarStatusAPartirDosArquivos();
 
-    if (!info) {
-      console.log(`Arquivo ignorado: ${nomeArquivo}`);
-      return;
-    }
-
-    if (!status[info.industria]) {
-      const ordemBase = INDUSTRIAS.findIndex((i) => i.nome === info.industria);
-
-      status[info.industria] = criarLinhaVazia(
-        info.industria,
-        info.codigo ?? null,
-        ordemBase >= 0 ? ordemBase : 999999
-      );
-    }
-
-    const tipo = info.tipo || "precos";
-
-    if (!status[info.industria][tipo]) {
-      status[info.industria][tipo] = {};
-    }
-
-    FILIAIS_VALIDAS.forEach((filial) => {
-      if (!status[info.industria][tipo][filial]) {
-        status[info.industria][tipo][filial] = {
-          atualizado: false,
-          mes: null,
-        };
+      if (onStatusChange) {
+        onStatusChange(status);
       }
-    });
 
-    if (info.filiais.length > 0) {
-      marcarSomenteFiliais(status[info.industria], tipo, info.filiais, info.mesAno);
-    } else {
-      marcarTodasFiliais(status[info.industria], tipo, info.mesAno);
+      if (io) {
+        io.emit("status-atualizado", status);
+      }
+
+      const nomeArquivo = filePath ? path.basename(filePath) : "(sem arquivo)";
+      console.log(`Status recalculado por ${motivo}: ${nomeArquivo}`);
+    } catch (error) {
+      console.error(`Erro ao recalcular status em ${motivo}:`, error);
     }
+  }
 
-    salvarStatus(status);
-
-    if (onStatusChange) {
-      onStatusChange(status);
-    }
-
-    if (io) {
-      io.emit("status-atualizado", status);
-    }
-
-    console.log(`Arquivo processado: ${nomeArquivo} -> ${info.industria} [${tipo}]`);
-  });
+  watcher.on("add", (filePath) => recalcularStatus("add", filePath));
+  watcher.on("change", (filePath) => recalcularStatus("change", filePath));
+  watcher.on("unlink", (filePath) => recalcularStatus("unlink", filePath));
 
   watcher.on("error", (error) => {
     console.error("Erro no watcher:", error);
