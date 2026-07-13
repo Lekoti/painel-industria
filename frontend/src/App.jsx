@@ -13,10 +13,17 @@ function App() {
   const [conectado, setConectado] = useState(false);
 
   useEffect(() => {
+    let ativo = true;
+
     async function carregar() {
       try {
-        const res = await axios.get(`${API_URL}/status`);
-        setDados(res.data || {});
+        const res = await axios.get(`${API_URL}/status`, {
+          timeout: 30000,
+        });
+
+        if (ativo) {
+          setDados(res.data || {});
+        }
       } catch (error) {
         console.error("Erro ao carregar status:", error);
       }
@@ -24,15 +31,42 @@ function App() {
 
     carregar();
 
-    const socket = io(API_URL, { transports: ["websocket", "polling"] });
-
-    socket.on("connect", () => setConectado(true));
-    socket.on("disconnect", () => setConectado(false));
-    socket.on("status-atualizado", (status) => {
-      setDados(status || {});
+    const socket = io(API_URL, {
+      transports: ["websocket", "polling"],
+      reconnection: true,
+      reconnectionAttempts: Infinity,
+      reconnectionDelay: 1000,
+      reconnectionDelayMax: 5000,
+      timeout: 20000,
     });
 
+    socket.on("connect", () => {
+      setConectado(true);
+      carregar();
+    });
+
+    socket.on("disconnect", () => {
+      setConectado(false);
+    });
+
+    socket.on("connect_error", (error) => {
+      console.error("Erro de conexão socket:", error);
+      setConectado(false);
+    });
+
+    socket.on("status-atualizado", (status) => {
+      if (ativo) {
+        setDados(status || {});
+      }
+    });
+
+    const intervalo = setInterval(() => {
+      carregar();
+    }, 30000);
+
     return () => {
+      ativo = false;
+      clearInterval(intervalo);
       socket.disconnect();
     };
   }, []);
