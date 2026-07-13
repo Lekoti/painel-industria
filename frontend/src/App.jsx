@@ -4,18 +4,51 @@ import { io } from "socket.io-client";
 import "./App.css";
 
 const FILIAIS = ["DPR", "AMS", "DMT", "DMS", "DSC"];
-const API_URL = import.meta.env.VITE_API_URL || "https://painel-industria-backend.onrender.com";
+const API_URL =
+  import.meta.env.VITE_API_URL ||
+  "https://painel-industria-backend.onrender.com";
 
 function App() {
   const [dados, setDados] = useState({});
   const [filtroIndustria, setFiltroIndustria] = useState("");
   const [conectado, setConectado] = useState(false);
+  const [atualizando, setAtualizando] = useState(false);
+
+  async function carregarStatus() {
+    if (atualizando) return;
+
+    try {
+      setAtualizando(true);
+
+      const res = await axios.get(`${API_URL}/status`, {
+        timeout: 30000,
+        params: {
+          t: Date.now(),
+        },
+        headers: {
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          Pragma: "no-cache",
+          Expires: "0",
+        },
+      });
+
+      setDados(res.data || {});
+    } catch (error) {
+      console.error("Erro ao carregar status:", error);
+    } finally {
+      setAtualizando(false);
+    }
+  }
 
   useEffect(() => {
     let ativo = true;
 
-    async function carregar() {
+    async function carregarComControle() {
+      if (!ativo) return;
+
       try {
+        setAtualizando(true);
+
         const res = await axios.get(`${API_URL}/status`, {
           timeout: 30000,
           params: {
@@ -33,10 +66,14 @@ function App() {
         }
       } catch (error) {
         console.error("Erro ao carregar status:", error);
+      } finally {
+        if (ativo) {
+          setAtualizando(false);
+        }
       }
     }
 
-    carregar();
+    carregarComControle();
 
     const socket = io(API_URL, {
       transports: ["polling", "websocket"],
@@ -49,7 +86,7 @@ function App() {
 
     socket.on("connect", () => {
       setConectado(true);
-      carregar();
+      carregarComControle();
     });
 
     socket.on("disconnect", () => {
@@ -62,20 +99,20 @@ function App() {
     });
 
     socket.on("status-atualizado", () => {
-      carregar();
+      carregarComControle();
     });
 
     const intervalo = setInterval(() => {
-      carregar();
+      carregarComControle();
     }, 5000);
 
     const onFocus = () => {
-      carregar();
+      carregarComControle();
     };
 
     const onVisibilityChange = () => {
       if (document.visibilityState === "visible") {
-        carregar();
+        carregarComControle();
       }
     };
 
@@ -115,9 +152,19 @@ function App() {
           value={filtroIndustria}
           onChange={(e) => setFiltroIndustria(e.target.value)}
         />
+
         <span className={conectado ? "status-live on" : "status-live off"}>
           {conectado ? "● Ao vivo" : "○ Offline"}
         </span>
+
+        <button
+          type="button"
+          className="refresh-button"
+          onClick={carregarStatus}
+          disabled={atualizando}
+        >
+          {atualizando ? "Atualizando..." : "Atualizar painel"}
+        </button>
       </div>
 
       <div className="table-wrap">
