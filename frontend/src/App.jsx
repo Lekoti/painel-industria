@@ -19,6 +19,14 @@ function App() {
       try {
         const res = await axios.get(`${API_URL}/status`, {
           timeout: 30000,
+          params: {
+            t: Date.now(),
+          },
+          headers: {
+            "Cache-Control": "no-cache, no-store, must-revalidate",
+            Pragma: "no-cache",
+            Expires: "0",
+          },
         });
 
         if (ativo) {
