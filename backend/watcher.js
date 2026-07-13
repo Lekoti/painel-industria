@@ -1,8 +1,9 @@
 const chokidar = require("chokidar");
 const path = require("path");
 const fs = require("fs");
-const { parseNomeArquivo, FILIAISVALIDAS, INDUSTRIAS } = require("./parser");
+const { parseNomeArquivo, INDUSTRIAS } = require("./parser");
 
+const FILIAIS = ["DPR", "AMS", "DMT", "DMS", "DSC"];
 const STATUS_PATH = path.join(__dirname, "data", "status.json");
 const WATCH_PATH = path.join(__dirname, "watch");
 
@@ -29,7 +30,7 @@ function criarLinhaVazia(industria, codigo, ordem) {
     pendencias: {},
   };
 
-  FILIAISVALIDAS.forEach((filial) => {
+  FILIAIS.forEach((filial) => {
     linha.precos[filial] = { atualizado: false, mes: null };
     linha.pendencias[filial] = { atualizado: false, mes: null };
   });
@@ -65,7 +66,7 @@ function garantirLinha(status, info) {
 }
 
 function marcarTodasFiliais(linha, tipo, mesAno) {
-  FILIAISVALIDAS.forEach((filial) => {
+  FILIAIS.forEach((filial) => {
     linha[tipo][filial] = { atualizado: true, mes: mesAno };
   });
 }
@@ -100,7 +101,7 @@ function recalcularStatusCompleto() {
     const linha = garantirLinha(status, info);
     const tipo = info.tipo || "precos";
 
-    if (info.filiais.length > 0) {
+    if (info.filiais && info.filiais.length > 0) {
       marcarSomenteFiliais(linha, tipo, info.filiais, info.mesAno);
     } else {
       marcarTodasFiliais(linha, tipo, info.mesAno);
@@ -120,9 +121,7 @@ function iniciarWatcher(io) {
 
   const emitirStatusAtualizado = () => {
     const status = recalcularStatusCompleto();
-    if (io) {
-      io.emit("status-atualizado", status);
-    }
+    if (io) io.emit("status-atualizado", status);
     console.log("Status recalculado com sucesso.");
   };
 
