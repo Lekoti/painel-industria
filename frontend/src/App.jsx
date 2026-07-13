@@ -32,7 +32,7 @@ function App() {
     carregar();
 
     const socket = io(API_URL, {
-      transports: ["websocket", "polling"],
+      transports: ["polling", "websocket"],
       reconnection: true,
       reconnectionAttempts: Infinity,
       reconnectionDelay: 1000,
@@ -54,15 +54,13 @@ function App() {
       setConectado(false);
     });
 
-    socket.on("status-atualizado", (status) => {
-      if (ativo) {
-        setDados(status || {});
-      }
+    socket.on("status-atualizado", () => {
+      carregar();
     });
 
     const intervalo = setInterval(() => {
       carregar();
-    }, 10000);
+    }, 5000);
 
     const onFocus = () => {
       carregar();
