@@ -62,11 +62,26 @@ function App() {
 
     const intervalo = setInterval(() => {
       carregar();
-    }, 30000);
+    }, 10000);
+
+    const onFocus = () => {
+      carregar();
+    };
+
+    const onVisibilityChange = () => {
+      if (document.visibilityState === "visible") {
+        carregar();
+      }
+    };
+
+    window.addEventListener("focus", onFocus);
+    document.addEventListener("visibilitychange", onVisibilityChange);
 
     return () => {
       ativo = false;
       clearInterval(intervalo);
+      window.removeEventListener("focus", onFocus);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
       socket.disconnect();
     };
   }, []);
