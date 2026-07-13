@@ -4,8 +4,7 @@ import { io } from "socket.io-client";
 import "./App.css";
 
 const FILIAIS = ["DPR", "AMS", "DMT", "DMS", "DSC"];
-
-const API_URL = "https://painel-industria-backend.onrender.com";
+const API_URL = import.meta.env.VITE_API_URL || "https://painel-industria-backend.onrender.com";
 
 function App() {
   const [dados, setDados] = useState({});
