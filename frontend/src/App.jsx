@@ -178,7 +178,11 @@ function App() {
                         key={`p-${row.industria}-${f}`}
                         className={cell.atualizado ? "ok" : "pending"}
                       >
-                        {cell.atualizado ? `Atualizado ${cell.mes}` : "-"}
+                        {cell.atualizado
+                          ? cell.mes
+                            ? `Atualizado ${cell.mes}`
+                            : "Atualizado"
+                          : "-"}
                       </td>
                     );
                   })}
@@ -194,7 +198,11 @@ function App() {
                         key={`pe-${row.industria}-${f}`}
                         className={cell.atualizado ? "ok" : "pending"}
                       >
-                        {cell.atualizado ? `Atualizado ${cell.mes}` : "-"}
+                        {cell.atualizado
+                          ? cell.mes
+                            ? `Atualizado ${cell.mes}`
+                            : "Atualizado"
+                          : "-"}
                       </td>
                     );
                   })}

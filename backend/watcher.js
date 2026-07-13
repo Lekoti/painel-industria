@@ -65,15 +65,22 @@ function garantirLinha(status, info) {
   return status[info.industria];
 }
 
+function definirCelula(linha, tipo, filial, mesAno) {
+  const atual = linha[tipo][filial];
+  // Nao rebaixa uma celula que ja tem mes valido por outra sem mes.
+  if (atual && atual.atualizado && atual.mes && !mesAno) return;
+  linha[tipo][filial] = { atualizado: true, mes: mesAno };
+}
+
 function marcarTodasFiliais(linha, tipo, mesAno) {
   FILIAIS.forEach((filial) => {
-    linha[tipo][filial] = { atualizado: true, mes: mesAno };
+    definirCelula(linha, tipo, filial, mesAno);
   });
 }
 
 function marcarSomenteFiliais(linha, tipo, filiais, mesAno) {
   filiais.forEach((filial) => {
-    linha[tipo][filial] = { atualizado: true, mes: mesAno };
+    definirCelula(linha, tipo, filial, mesAno);
   });
 }
 

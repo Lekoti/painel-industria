@@ -1,0 +1,5 @@
+# Dependencias
+node_modules/
+
+# Artefato gerado em tempo de execucao (recalculado a cada boot)
+data/status.json

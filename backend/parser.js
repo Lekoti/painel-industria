@@ -2,6 +2,21 @@ const path = require("path");
 
 const FILIAIS_VALIDAS = ["DPR", "AMS", "DMT", "DMS", "DSC"];
 
+// Siglas de UF que aparecem soltas nos nomes de arquivo e correspondem a uma filial.
+const ALIAS_FILIAIS = {
+  PR: "DPR",
+  SC: "DSC",
+  MT: "DMT",
+  MS: "DMS",
+};
+
+// Resolve um token para a filial canonica (ou null se nao for filial).
+function resolverFilial(token) {
+  const t = normalizarTexto(token);
+  if (FILIAIS_VALIDAS.includes(t)) return t;
+  return ALIAS_FILIAIS[t] || null;
+}
+
 const MESES = {
   JANEIRO: 1,
   FEVEREIRO: 2,
@@ -21,7 +36,7 @@ const INDUSTRIAS = [
   { codigo: 39, nome: "CIFARMA", aliases: ["CIFARMA FARMA", "CIFARMA PROPAGANDA MEDICA"] },
   { codigo: 180, nome: "ECOFITUS", aliases: [] },
   { codigo: 56, nome: "EMS", aliases: [] },
-  { codigo: 875, nome: "EMS GENERICO", aliases: [] },
+  { codigo: 875, nome: "EMS GENERICO", aliases: ["EMS G"] },
   { codigo: 60, nome: "EUROFARMA", aliases: [] },
   { codigo: 9, nome: "GEOLAB", aliases: [] },
   { codigo: 68, nome: "KLEY HERTZ", aliases: [] },
@@ -43,7 +58,7 @@ const INDUSTRIAS = [
   { codigo: 882, nome: "ALPHAFITUS CREATINA", aliases: [] },
   { codigo: 909, nome: "AMAKHA PARIS", aliases: [] },
   { codigo: 15, nome: "ANALITIC", aliases: [] },
-  { codigo: 18, nome: "ARTE NATIVA VELTOFARMA", aliases: [] },
+  { codigo: 18, nome: "ARTE NATIVA VELTOFARMA", aliases: ["ARTE NATIVA"] },
   { codigo: 873, nome: "AVIZOR", aliases: [] },
   { codigo: 863, nome: "AVVIO", aliases: [] },
   { codigo: 868, nome: "BEIRA ALTA", aliases: [] },
@@ -83,7 +98,7 @@ const INDUSTRIAS = [
   { codigo: 122, nome: "GLOBO", aliases: [] },
   { codigo: 184, nome: "GREENPHARMA", aliases: [] },
   { codigo: 786, nome: "GUM SUNSTAT", aliases: [] },
-  { codigo: 107, nome: "HADASS RIVICA TROL", aliases: [] },
+  { codigo: 107, nome: "HADASS RIVICA TROL", aliases: ["HADASS", "HADASSAH"] },
   { codigo: 832, nome: "HEALTHY", aliases: [] },
   { codigo: 67, nome: "HEARST", aliases: [] },
   { codigo: 913, nome: "HERBISSIMO", aliases: [] },
@@ -156,6 +171,9 @@ const INDUSTRIAS = [
   { codigo: 168, nome: "ZYDUS", aliases: [] },
   { codigo: 63, nome: "FARMABRAZ PASSAJA", aliases: [] },
   { codigo: 906, nome: "PRINCIPIA ES", aliases: [] },
+  // Fornecedores recebidos por arquivo mas ainda sem codigo cadastrado no ERP.
+  { codigo: null, nome: "MEDLEVENSOHN", aliases: [] },
+  { codigo: null, nome: "UBERPHARMA", aliases: [] },
 ];
 
 function normalizarTexto(texto) {
@@ -176,10 +194,6 @@ for (const item of INDUSTRIAS) {
 
 function removerExtensao(nomeArquivo) {
   return path.basename(nomeArquivo, path.extname(nomeArquivo));
-}
-
-function extrairFiliaisDeTokens(tokens) {
-  return tokens.filter((t) => FILIAIS_VALIDAS.includes(normalizarTexto(t)));
 }
 
 function parseNomeArquivo(nomeArquivo) {
@@ -215,8 +229,16 @@ function parseNomeArquivo(nomeArquivo) {
 
   const tokensSemMes = mesIndex >= 0 ? restoTokens.slice(0, mesIndex) : restoTokens.slice();
 
-  const filiais = extrairFiliaisDeTokens(tokensSemMes);
-  const tokensIndustria = tokensSemMes.filter((t) => !FILIAIS_VALIDAS.includes(t));
+  const filiais = [];
+  const tokensIndustria = [];
+  for (const token of tokensSemMes) {
+    const filial = resolverFilial(token);
+    if (filial) {
+      if (!filiais.includes(filial)) filiais.push(filial);
+    } else {
+      tokensIndustria.push(token);
+    }
+  }
 
   let industria = null;
   for (let len = tokensIndustria.length; len >= 1; len--) {

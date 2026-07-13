@@ -1,22 +1,23 @@
 ================================================================================
  PROJETO: PAINEL-PRECO-PENDENCIA
  Codigo-fonte completo
- Gerado em: 2026-07-13 (atualizado)
+ Gerado em: 2026-07-13 (atualizado apos correcoes)
 ================================================================================
 
 OBSERVACOES:
  - node_modules/ omitido (dependencias instalaveis via npm install).
- - Arquivos gerados omitidos: backend/data/status.json (dados de status),
-   package-lock.json (lockfiles).
+ - Arquivos gerados omitidos: backend/data/status.json (recalculado a cada
+   boot), package-lock.json (lockfiles).
+ - backend/industries.js removido (era codigo morto).
  - Planilhas de dados (.xls/.xlsx/.xlsb/.xlsm) e imagens omitidas (binarios).
 
 ESTRUTURA DE ARQUIVOS-FONTE:
+   backend/.gitignore
    backend/package.json
    backend/nodemon.json
    backend/server.js
    backend/parser.js
    backend/watcher.js
-   backend/industries.js
    frontend/package.json
    frontend/vite.config.js
    frontend/index.html
@@ -30,6 +31,17 @@ ESTRUTURA DE ARQUIVOS-FONTE:
    frontend/src/index.css
    frontend/public/icons.svg
    frontend/public/favicon.svg
+
+
+################################################################################
+# ARQUIVO: backend/.gitignore
+################################################################################
+
+# Dependencias
+node_modules/
+
+# Artefato gerado em tempo de execucao (recalculado a cada boot)
+data/status.json
 
 
 ################################################################################
@@ -144,6 +156,21 @@ const path = require("path");
 
 const FILIAIS_VALIDAS = ["DPR", "AMS", "DMT", "DMS", "DSC"];
 
+// Siglas de UF que aparecem soltas nos nomes de arquivo e correspondem a uma filial.
+const ALIAS_FILIAIS = {
+  PR: "DPR",
+  SC: "DSC",
+  MT: "DMT",
+  MS: "DMS",
+};
+
+// Resolve um token para a filial canonica (ou null se nao for filial).
+function resolverFilial(token) {
+  const t = normalizarTexto(token);
+  if (FILIAIS_VALIDAS.includes(t)) return t;
+  return ALIAS_FILIAIS[t] || null;
+}
+
 const MESES = {
   JANEIRO: 1,
   FEVEREIRO: 2,
@@ -163,7 +190,7 @@ const INDUSTRIAS = [
   { codigo: 39, nome: "CIFARMA", aliases: ["CIFARMA FARMA", "CIFARMA PROPAGANDA MEDICA"] },
   { codigo: 180, nome: "ECOFITUS", aliases: [] },
   { codigo: 56, nome: "EMS", aliases: [] },
-  { codigo: 875, nome: "EMS GENERICO", aliases: [] },
+  { codigo: 875, nome: "EMS GENERICO", aliases: ["EMS G"] },
   { codigo: 60, nome: "EUROFARMA", aliases: [] },
   { codigo: 9, nome: "GEOLAB", aliases: [] },
   { codigo: 68, nome: "KLEY HERTZ", aliases: [] },
@@ -185,7 +212,7 @@ const INDUSTRIAS = [
   { codigo: 882, nome: "ALPHAFITUS CREATINA", aliases: [] },
   { codigo: 909, nome: "AMAKHA PARIS", aliases: [] },
   { codigo: 15, nome: "ANALITIC", aliases: [] },
-  { codigo: 18, nome: "ARTE NATIVA VELTOFARMA", aliases: [] },
+  { codigo: 18, nome: "ARTE NATIVA VELTOFARMA", aliases: ["ARTE NATIVA"] },
   { codigo: 873, nome: "AVIZOR", aliases: [] },
   { codigo: 863, nome: "AVVIO", aliases: [] },
   { codigo: 868, nome: "BEIRA ALTA", aliases: [] },
@@ -225,7 +252,7 @@ const INDUSTRIAS = [
   { codigo: 122, nome: "GLOBO", aliases: [] },
   { codigo: 184, nome: "GREENPHARMA", aliases: [] },
   { codigo: 786, nome: "GUM SUNSTAT", aliases: [] },
-  { codigo: 107, nome: "HADASS RIVICA TROL", aliases: [] },
+  { codigo: 107, nome: "HADASS RIVICA TROL", aliases: ["HADASS", "HADASSAH"] },
   { codigo: 832, nome: "HEALTHY", aliases: [] },
   { codigo: 67, nome: "HEARST", aliases: [] },
   { codigo: 913, nome: "HERBISSIMO", aliases: [] },
@@ -298,6 +325,9 @@ const INDUSTRIAS = [
   { codigo: 168, nome: "ZYDUS", aliases: [] },
   { codigo: 63, nome: "FARMABRAZ PASSAJA", aliases: [] },
   { codigo: 906, nome: "PRINCIPIA ES", aliases: [] },
+  // Fornecedores recebidos por arquivo mas ainda sem codigo cadastrado no ERP.
+  { codigo: null, nome: "MEDLEVENSOHN", aliases: [] },
+  { codigo: null, nome: "UBERPHARMA", aliases: [] },
 ];
 
 function normalizarTexto(texto) {
@@ -318,10 +348,6 @@ for (const item of INDUSTRIAS) {
 
 function removerExtensao(nomeArquivo) {
   return path.basename(nomeArquivo, path.extname(nomeArquivo));
-}
-
-function extrairFiliaisDeTokens(tokens) {
-  return tokens.filter((t) => FILIAIS_VALIDAS.includes(normalizarTexto(t)));
 }
 
 function parseNomeArquivo(nomeArquivo) {
@@ -357,8 +383,16 @@ function parseNomeArquivo(nomeArquivo) {
 
   const tokensSemMes = mesIndex >= 0 ? restoTokens.slice(0, mesIndex) : restoTokens.slice();
 
-  const filiais = extrairFiliaisDeTokens(tokensSemMes);
-  const tokensIndustria = tokensSemMes.filter((t) => !FILIAIS_VALIDAS.includes(t));
+  const filiais = [];
+  const tokensIndustria = [];
+  for (const token of tokensSemMes) {
+    const filial = resolverFilial(token);
+    if (filial) {
+      if (!filiais.includes(filial)) filiais.push(filial);
+    } else {
+      tokensIndustria.push(token);
+    }
+  }
 
   let industria = null;
   for (let len = tokensIndustria.length; len >= 1; len--) {
@@ -467,15 +501,22 @@ function garantirLinha(status, info) {
   return status[info.industria];
 }
 
+function definirCelula(linha, tipo, filial, mesAno) {
+  const atual = linha[tipo][filial];
+  // Nao rebaixa uma celula que ja tem mes valido por outra sem mes.
+  if (atual && atual.atualizado && atual.mes && !mesAno) return;
+  linha[tipo][filial] = { atualizado: true, mes: mesAno };
+}
+
 function marcarTodasFiliais(linha, tipo, mesAno) {
   FILIAIS.forEach((filial) => {
-    linha[tipo][filial] = { atualizado: true, mes: mesAno };
+    definirCelula(linha, tipo, filial, mesAno);
   });
 }
 
 function marcarSomenteFiliais(linha, tipo, filiais, mesAno) {
   filiais.forEach((filial) => {
-    linha[tipo][filial] = { atualizado: true, mes: mesAno };
+    definirCelula(linha, tipo, filial, mesAno);
   });
 }
 
@@ -597,70 +638,6 @@ module.exports = {
 };
 
 ################################################################################
-# ARQUIVO: backend/industries.js
-################################################################################
-
-const INDUSTRIAS = [
-  { codigo: 39, nome: "CIFARMA", nomePadrao: "CIFARMA FARMA", aliases: ["CIFARMA PROPAGANDA MEDICA"] },
-  { codigo: 180, nome: "ECOFITUS", nomePadrao: "ECOFITUS" },
-  { codigo: 56, nome: "EMS", nomePadrao: "EMS" },
-  { codigo: 875, nome: "EMS GENERICO", nomePadrao: "EMS GENERICO" },
-  { codigo: 60, nome: "EUROFARMA", nomePadrao: "EUROFARMA" },
-  { codigo: 9, nome: "GEOLAB", nomePadrao: "GEOLAB" },
-  { codigo: 68, nome: "KLEY HERTZ", nomePadrao: "KLEY HERTZ" },
-  { codigo: 4, nome: "LEGRAND GENERICOS", nomePadrao: "LEGRAND GENERICOS" },
-  { codigo: 2, nome: "LEGRAND TARJADOS", nomePadrao: "LEGRAND TARJADOS" },
-  { codigo: 193, nome: "MAXINUTRI", nomePadrao: "MAXINUTRI" },
-  { codigo: 8, nome: "MULTILAB", nomePadrao: "MULTILAB" },
-  { codigo: 85, nome: "NATULAB", nomePadrao: "NATULAB" },
-  { codigo: 5, nome: "NEO QUIMICA GENERICO", nomePadrao: "NEO QUIMICA GENERICO" },
-  { codigo: 1, nome: "NEO QUIMICA SMART", nomePadrao: "NEO QUIMICA SMART" },
-  { codigo: 3, nome: "TEUTO", nomePadrao: "TEUTO" },
-  { codigo: 118, nome: "VITAMEDIC", nomePadrao: "VITAMEDIC" },
-
-  { codigo: 778, nome: "3B", nomePadrao: "3B" },
-  { codigo: 750, nome: "ABOVE", nomePadrao: "ABOVE" },
-  { codigo: 10, nome: "ACCUMED", nomePadrao: "ACCUMED" },
-  { codigo: 11, nome: "ADDIT", nomePadrao: "ADDIT" },
-  { codigo: 12, nome: "ADV LAB TAYUYNA", nomePadrao: "ADV LAB TAYUYNA", aliases: ["ADV"] },
-  { codigo: 231, nome: "AIRELA", nomePadrao: "AIRELA" },
-  { codigo: 882, nome: "ALPHAFITUS CREATINA", nomePadrao: "ALPHAFITUS CREATINA" },
-  { codigo: 909, nome: "AMAKHA PARIS", nomePadrao: "AMAKHA PARIS" },
-  { codigo: 15, nome: "ANALITIC", nomePadrao: "ANALITIC" },
-  { codigo: 18, nome: "ARTE NATIVA VELTOFARMA", nomePadrao: "ARTE NATIVA VELTOFARMA" },
-  { codigo: 873, nome: "AVIZOR", nomePadrao: "AVIZOR" },
-  { codigo: 863, nome: "AVVIO", nomePadrao: "AVVIO" },
-  { codigo: 868, nome: "BEIRA ALTA", nomePadrao: "BEIRA ALTA" },
-  { codigo: 169, nome: "BELFAR", nomePadrao: "BELFAR" },
-  { codigo: 859, nome: "BELLAPHYTUS", nomePadrao: "BELLAPHYTUS" },
-  { codigo: 24, nome: "BIONATUS", nomePadrao: "BIONATUS" },
-  { codigo: 28, nome: "BRASTERAPICA", nomePadrao: "BRASTERAPICA" },
-  { codigo: 779, nome: "BREYER", nomePadrao: "BREYER" },
-  { codigo: 31, nome: "BUTTERFLY", nomePadrao: "BUTTERFLY" },
-  { codigo: 32, nome: "C M HOSPITALAR", nomePadrao: "C M HOSPITALAR" },
-  { codigo: 742, nome: "CARTA FABRIL", nomePadrao: "CARTA FABRIL" },
-  { codigo: 34, nome: "CATARINENSE", nomePadrao: "CATARINENSE" },
-  { codigo: 35, nome: "CATARINENSE MATACURA", nomePadrao: "CATARINENSE MATACURA" },
-  { codigo: 36, nome: "CAZI", nomePadrao: "CAZI" },
-  { codigo: 843, nome: "CCM", nomePadrao: "CCM" },
-  { codigo: 49, nome: "CELLERA DELTA", nomePadrao: "CELLERA DELTA" },
-  { codigo: 179, nome: "CIFARMA PROPAGANDA MEDICA", nomePadrao: "CIFARMA", aliases: ["CIFARMA FARMA"] },
-  { codigo: 40, nome: "CIMED", nomePadrao: "CIMED" },
-  { codigo: 41, nome: "CIRURGICA FERNANDES", nomePadrao: "CIRURGICA FERNANDES" },
-  { codigo: 724, nome: "COMERCIO E DISTRIBUIDORA DELTA", nomePadrao: "COMERCIO E DISTRIBUIDORA DELTA" },
-  { codigo: 44, nome: "CREMER", nomePadrao: "CREMER" },
-  { codigo: 46, nome: "DKT", nomePadrao: "DKT" },
-  { codigo: 893, nome: "DACOLONIA", nomePadrao: "DACOLONIA" },
-  { codigo: 865, nome: "DENTAL CLEAN", nomePadrao: "DENTAL CLEAN" },
-  { codigo: 53, nome: "DIVON", nomePadrao: "DIVON" },
-  { codigo: 54, nome: "DORJA", nomePadrao: "DORJA" },
-  { codigo: 889, nome: "DR PEANUT", nomePadrao: "DR PEANUT" },
-  { codigo: 894, nome: "DRICA", nomePadrao: "DRICA" }
-];
-
-module.exports = { INDUSTRIAS };
-
-################################################################################
 # ARQUIVO: frontend/package.json
 ################################################################################
 
@@ -727,7 +704,7 @@ export default defineConfig({
 # ARQUIVO: frontend/.env
 ################################################################################
 
-VITE_API_URL=https://painel-backend.onrender.com
+VITE_API_URL=https://painel-industria-backend.onrender.com
 
 ################################################################################
 # ARQUIVO: frontend/.gitignore
@@ -995,7 +972,11 @@ function App() {
                         key={`p-${row.industria}-${f}`}
                         className={cell.atualizado ? "ok" : "pending"}
                       >
-                        {cell.atualizado ? `Atualizado ${cell.mes}` : "-"}
+                        {cell.atualizado
+                          ? cell.mes
+                            ? `Atualizado ${cell.mes}`
+                            : "Atualizado"
+                          : "-"}
                       </td>
                     );
                   })}
@@ -1011,7 +992,11 @@ function App() {
                         key={`pe-${row.industria}-${f}`}
                         className={cell.atualizado ? "ok" : "pending"}
                       >
-                        {cell.atualizado ? `Atualizado ${cell.mes}` : "-"}
+                        {cell.atualizado
+                          ? cell.mes
+                            ? `Atualizado ${cell.mes}`
+                            : "Atualizado"
+                          : "-"}
                       </td>
                     );
                   })}
