@@ -12,13 +12,13 @@ function App() {
   const [dados, setDados] = useState({});
   const [filtroIndustria, setFiltroIndustria] = useState("");
   const [conectado, setConectado] = useState(false);
-  const [atualizando, setAtualizando] = useState(false);
+  const [atualizandoManual, setAtualizandoManual] = useState(false);
 
-  async function carregarStatus() {
-    if (atualizando) return;
-
+  async function carregarStatus(manual = false) {
     try {
-      setAtualizando(true);
+      if (manual) {
+        setAtualizandoManual(true);
+      }
 
       const res = await axios.get(`${API_URL}/status`, {
         timeout: 30000,
@@ -36,18 +36,22 @@ function App() {
     } catch (error) {
       console.error("Erro ao carregar status:", error);
     } finally {
-      setAtualizando(false);
+      if (manual) {
+        setAtualizandoManual(false);
+      }
     }
   }
 
   useEffect(() => {
     let ativo = true;
 
-    async function carregarComControle() {
+    async function carregarComControle(manual = false) {
       if (!ativo) return;
 
       try {
-        setAtualizando(true);
+        if (manual) {
+          setAtualizandoManual(true);
+        }
 
         const res = await axios.get(`${API_URL}/status`, {
           timeout: 30000,
@@ -67,13 +71,13 @@ function App() {
       } catch (error) {
         console.error("Erro ao carregar status:", error);
       } finally {
-        if (ativo) {
-          setAtualizando(false);
+        if (ativo && manual) {
+          setAtualizandoManual(false);
         }
       }
     }
 
-    carregarComControle();
+    carregarComControle(false);
 
     const socket = io(API_URL, {
       transports: ["polling", "websocket"],
@@ -86,7 +90,7 @@ function App() {
 
     socket.on("connect", () => {
       setConectado(true);
-      carregarComControle();
+      carregarComControle(false);
     });
 
     socket.on("disconnect", () => {
@@ -99,20 +103,20 @@ function App() {
     });
 
     socket.on("status-atualizado", () => {
-      carregarComControle();
+      carregarComControle(false);
     });
 
     const intervalo = setInterval(() => {
-      carregarComControle();
+      carregarComControle(false);
     }, 5000);
 
     const onFocus = () => {
-      carregarComControle();
+      carregarComControle(false);
     };
 
     const onVisibilityChange = () => {
       if (document.visibilityState === "visible") {
-        carregarComControle();
+        carregarComControle(false);
       }
     };
 
@@ -160,10 +164,10 @@ function App() {
         <button
           type="button"
           className="refresh-button"
-          onClick={carregarStatus}
-          disabled={atualizando}
+          onClick={() => carregarStatus(true)}
+          disabled={atualizandoManual}
         >
-          {atualizando ? "Atualizando..." : "Atualizar painel"}
+          {atualizandoManual ? "Atualizando..." : "Atualizar painel"}
         </button>
       </div>
 
