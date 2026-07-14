@@ -28,25 +28,6 @@ app.get("/status", (req, res) => {
   res.json(statusAtual);
 });
 
-app.post("/refresh", (req, res) => {
-  try {
-    statusAtual = criarSeedInicial();
-    io.emit("status-atualizado", statusAtual);
-
-    res.json({
-      ok: true,
-      atualizado: true,
-      status: statusAtual,
-    });
-  } catch (error) {
-    console.error("Erro ao atualizar status manualmente:", error);
-    res.status(500).json({
-      ok: false,
-      error: "Falha ao atualizar status manualmente.",
-    });
-  }
-});
-
 app.get("/health", (req, res) => {
   res.json({
     ok: true,
