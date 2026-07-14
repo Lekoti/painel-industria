@@ -18,6 +18,21 @@ function App() {
     try {
       if (manual) {
         setAtualizandoManual(true);
+
+        const res = await axios.post(`${API_URL}/refresh`, null, {
+          timeout: 30000,
+          params: {
+            t: Date.now(),
+          },
+          headers: {
+            "Cache-Control": "no-cache, no-store, must-revalidate",
+            Pragma: "no-cache",
+            Expires: "0",
+          },
+        });
+
+        setDados(res.data?.status || {});
+        return;
       }
 
       const res = await axios.get(`${API_URL}/status`, {
@@ -45,14 +60,10 @@ function App() {
   useEffect(() => {
     let ativo = true;
 
-    async function carregarComControle(manual = false) {
+    async function carregarComControle() {
       if (!ativo) return;
 
       try {
-        if (manual) {
-          setAtualizandoManual(true);
-        }
-
         const res = await axios.get(`${API_URL}/status`, {
           timeout: 30000,
           params: {
@@ -70,14 +81,10 @@ function App() {
         }
       } catch (error) {
         console.error("Erro ao carregar status:", error);
-      } finally {
-        if (ativo && manual) {
-          setAtualizandoManual(false);
-        }
       }
     }
 
-    carregarComControle(false);
+    carregarComControle();
 
     const socket = io(API_URL, {
       transports: ["polling", "websocket"],
@@ -90,7 +97,7 @@ function App() {
 
     socket.on("connect", () => {
       setConectado(true);
-      carregarComControle(false);
+      carregarComControle();
     });
 
     socket.on("disconnect", () => {
@@ -103,20 +110,20 @@ function App() {
     });
 
     socket.on("status-atualizado", () => {
-      carregarComControle(false);
+      carregarComControle();
     });
 
     const intervalo = setInterval(() => {
-      carregarComControle(false);
+      carregarComControle();
     }, 5000);
 
     const onFocus = () => {
-      carregarComControle(false);
+      carregarComControle();
     };
 
     const onVisibilityChange = () => {
       if (document.visibilityState === "visible") {
-        carregarComControle(false);
+        carregarComControle();
       }
     };
 
