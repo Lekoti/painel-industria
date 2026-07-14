@@ -1,14 +1,13 @@
 ================================================================================
  PROJETO: PAINEL-PRECO-PENDENCIA
  Codigo-fonte completo
- Gerado em: 2026-07-13 (atualizado apos correcoes)
+ Gerado em: 2026-07-14 (atualizado apos ajustes no watcher e painel)
 ================================================================================
 
 OBSERVACOES:
  - node_modules/ omitido (dependencias instalaveis via npm install).
  - Arquivos gerados omitidos: backend/data/status.json (recalculado a cada
    boot), package-lock.json (lockfiles).
- - backend/industries.js removido (era codigo morto).
  - Planilhas de dados (.xls/.xlsx/.xlsb/.xlsm) e imagens omitidas (binarios).
 
 ESTRUTURA DE ARQUIVOS-FONTE:
@@ -454,6 +453,12 @@ function carregarStatus() {
 }
 
 function salvarStatus(status) {
+  const dir = path.dirname(STATUS_PATH);
+
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+
   fs.writeFileSync(STATUS_PATH, JSON.stringify(status, null, 2), "utf-8");
 }
 
@@ -503,7 +508,6 @@ function garantirLinha(status, info) {
 
 function definirCelula(linha, tipo, filial, mesAno) {
   const atual = linha[tipo][filial];
-  // Nao rebaixa uma celula que ja tem mes valido por outra sem mes.
   if (atual && atual.atualizado && atual.mes && !mesAno) return;
   linha[tipo][filial] = { atualizado: true, mes: mesAno };
 }
@@ -529,6 +533,7 @@ function listarArquivosDaPasta(dir) {
 }
 
 function recalcularStatusCompleto() {
+  // Seed inicial: TODAS as indústrias
   const status = criarSeedInicial();
   const arquivos = listarArquivosDaPasta(WATCH_PATH);
 
@@ -551,6 +556,7 @@ function recalcularStatusCompleto() {
     }
   });
 
+  // NÃO remove linhas: mantém todas as indústrias, com células "-".
   salvarStatus(status);
   return status;
 }
@@ -798,18 +804,55 @@ import { io } from "socket.io-client";
 import "./App.css";
 
 const FILIAIS = ["DPR", "AMS", "DMT", "DMS", "DSC"];
-const API_URL = import.meta.env.VITE_API_URL || "https://painel-industria-backend.onrender.com";
+const API_URL =
+  import.meta.env.VITE_API_URL ||
+  "https://painel-industria-backend.onrender.com";
 
 function App() {
   const [dados, setDados] = useState({});
   const [filtroIndustria, setFiltroIndustria] = useState("");
   const [conectado, setConectado] = useState(false);
+  const [atualizandoManual, setAtualizandoManual] = useState(false);
+
+  async function carregarStatus(manual = false) {
+    try {
+      if (manual) {
+        setAtualizandoManual(true);
+      }
+
+      const res = await axios.get(`${API_URL}/status`, {
+        timeout: 30000,
+        params: {
+          t: Date.now(),
+        },
+        headers: {
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          Pragma: "no-cache",
+          Expires: "0",
+        },
+      });
+
+      setDados(res.data || {});
+    } catch (error) {
+      console.error("Erro ao carregar status:", error);
+    } finally {
+      if (manual) {
+        setAtualizandoManual(false);
+      }
+    }
+  }
 
   useEffect(() => {
     let ativo = true;
 
-    async function carregar() {
+    async function carregarComControle(manual = false) {
+      if (!ativo) return;
+
       try {
+        if (manual) {
+          setAtualizandoManual(true);
+        }
+
         const res = await axios.get(`${API_URL}/status`, {
           timeout: 30000,
           params: {
@@ -827,10 +870,14 @@ function App() {
         }
       } catch (error) {
         console.error("Erro ao carregar status:", error);
+      } finally {
+        if (ativo && manual) {
+          setAtualizandoManual(false);
+        }
       }
     }
 
-    carregar();
+    carregarComControle(false);
 
     const socket = io(API_URL, {
       transports: ["polling", "websocket"],
@@ -843,7 +890,7 @@ function App() {
 
     socket.on("connect", () => {
       setConectado(true);
-      carregar();
+      carregarComControle(false);
     });
 
     socket.on("disconnect", () => {
@@ -856,20 +903,20 @@ function App() {
     });
 
     socket.on("status-atualizado", () => {
-      carregar();
+      carregarComControle(false);
     });
 
     const intervalo = setInterval(() => {
-      carregar();
+      carregarComControle(false);
     }, 5000);
 
     const onFocus = () => {
-      carregar();
+      carregarComControle(false);
     };
 
     const onVisibilityChange = () => {
       if (document.visibilityState === "visible") {
-        carregar();
+        carregarComControle(false);
       }
     };
 
@@ -895,7 +942,7 @@ function App() {
 
     return lista.filter((row) => {
       const texto = `${row.industria ?? ""} ${row.codigo ?? ""}`.toLowerCase();
-      return texto.includes(termo);
+      returntexto.includes(termo);
     });
   }, [dados, filtroIndustria]);
 
@@ -909,9 +956,19 @@ function App() {
           value={filtroIndustria}
           onChange={(e) => setFiltroIndustria(e.target.value)}
         />
+
         <span className={conectado ? "status-live on" : "status-live off"}>
           {conectado ? "● Ao vivo" : "○ Offline"}
         </span>
+
+        <button
+          type="button"
+          className="refresh-button"
+          onClick={() => carregarStatus(true)}
+          disabled={atualizandoManual}
+        >
+          {atualizandoManual ? "Atualizando..." : "Atualizar painel"}
+        </button>
       </div>
 
       <div className="table-wrap">
@@ -1037,6 +1094,11 @@ export default App;
   --pending-bg: #f3f3f3;
   --pending-text: #666666;
 
+  --button-bg: #0f766e;
+  --button-bg-hover: #0c625c;
+  --button-text: #ffffff;
+  --button-disabled: #94a3b8;
+
   --radius-lg: 12px;
   --radius-sm: 8px;
   --shadow: 0 10px 24px rgba(80, 68, 28, 0.08);
@@ -1070,6 +1132,7 @@ body {
   align-items: center;
   gap: 12px;
   justify-content: flex-start;
+  flex-wrap: wrap;
   margin-bottom: 12px;
 }
 
@@ -1107,6 +1170,45 @@ body {
 .filter-input:focus {
   border-color: #c7b800;
   box-shadow: 0 0 0 3px rgba(239, 225, 0, 0.18);
+}
+
+.refresh-button {
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  min-height: 40px;
+  font-size: 14px;
+  font-weight: 700;
+  background: var(--button-bg);
+  color: var(--button-text);
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background 0.2s ease,
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.refresh-button:hover {
+  background: var(--button-bg-hover);
+  box-shadow: 0 6px 16px rgba(15, 118, 110, 0.2);
+}
+
+.refresh-button:active {
+  transform: translateY(1px);
+}
+
+.refresh-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.22);
+}
+
+.refresh-button:disabled {
+  background: var(--button-disabled);
+  cursor: not-allowed;
+  opacity: 0.75;
+  box-shadow: none;
 }
 
 .table-wrap {
@@ -1253,7 +1355,7 @@ body {
 @media (max-width: 900px) {
   :root {
     --header-row-1: 40px;
-    --table-height: calc(100vh - 96px);
+    --table-height: calc(100vh - 140px);
   }
 
   .page {
@@ -1262,10 +1364,16 @@ body {
 
   .toolbar {
     margin-bottom: 10px;
+    align-items: stretch;
   }
 
   .filter-input {
     width: 100%;
+  }
+
+  .refresh-button {
+    width: 100%;
+    justify-content: center;
   }
 
   .painel {
@@ -1296,8 +1404,6 @@ body {
     font-size: 10px;
   }
 }
-
-
 
 ################################################################################
 # ARQUIVO: frontend/src/index.css
@@ -1451,3 +1557,4 @@ code {
 ################################################################################
 
 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="46" fill="none" viewBox="0 0 48 46"><path fill="#863bff" d="M25.946 44.938c-.664.845-2.021.375-2.021-.698V33.937a2.26 2.26 0 0 0-2.262-2.262H10.287c-.92 0-1.456-1.04-.92-1.788l7.48-10.471c1.07-1.497 0-3.578-1.842-3.578H1.237c-.92 0-1.456-1.04-.92-1.788L10.013.474c.214-.297.556-.474.92-.474h28.894c.92 0 1.456 1.04.92 1.788l-7.48 10.471c-1.07 1.498 0 3.579 1.842 3.579h11.377c.943 0 1.473 1.088.89 1.83L25.947 44.94z" style="fill:#863bff;fill:color(display-p3 .5252 .23 1);fill-opacity:1"/><mask id="a" width="48" height="46" x="0" y="0" maskUnits="userSpaceOnUse" style="mask-type:alpha"><path fill="#000" d="M25.842 44.938c-.664.844-2.021.375-2.021-.698V33.937a2.26 2.26 0 0 0-2.262-2.262H10.183c-.92 0-1.456-1.04-.92-1.788l7.48-10.471c1.07-1.498 0-3.579-1.842-3.579H1.133c-.92 0-1.456-1.04-.92-1.787L9.91.473c.214-.297.556-.474.92-.474h28.894c.92 0 1.456 1.04.92 1.788l-7.48 10.471c-1.07 1.498 0 3.578 1.842 3.578h11.377c.943 0 1.473 1.088.89 1.832L25.843 44.94z" style="fill:#000;fill-opacity:1"/></mask><g mask="url(#a)"><g filter="url(#b)"><ellipse cx="5.508" cy="14.704" fill="#ede6ff" rx="5.508" ry="14.704" style="fill:#ede6ff;fill:color(display-p3 .9275 .9033 1);fill-opacity:1" transform="matrix(.00324 1 1 -.00324 -4.47 31.516)"/></g><g filter="url(#c)"><ellipse cx="10.399" cy="29.851" fill="#ede6ff" rx="10.399" ry="29.851" style="fill:#ede6ff;fill:color(display-p3 .9275 .9033 1);fill-opacity:1" transform="matrix(.00324 1 1 -.00324 -39.328 7.883)"/></g><g filter="url(#d)"><ellipse cx="5.508" cy="30.487" fill="#7e14ff" rx="5.508" ry="30.487" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(89.814 -25.913 -14.639)scale(1 -1)"/></g><g filter="url(#e)"><ellipse cx="5.508" cy="30.599" fill="#7e14ff" rx="5.508" ry="30.599" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(89.814 -32.644 -3.334)scale(1 -1)"/></g><g filter="url(#f)"><ellipse cx="5.508" cy="30.599" fill="#7e14ff" rx="5.508" ry="30.599" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="matrix(.00324 1 1 -.00324 -34.34 30.47)"/></g><g filter="url(#g)"><ellipse cx="14.072" cy="22.078" fill="#ede6ff" rx="14.072" ry="22.078" style="fill:#ede6ff;fill:color(display-p3 .9275 .9033 1);fill-opacity:1" transform="rotate(93.35 24.506 48.493)scale(-1 1)"/></g><g filter="url(#h)"><ellipse cx="3.47" cy="21.501" fill="#7e14ff" rx="3.47" ry="21.501" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(89.009 28.708 47.59)scale(-1 1)"/></g><g filter="url(#i)"><ellipse cx="3.47" cy="21.501" fill="#7e14ff" rx="3.47" ry="21.501" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(89.009 28.708 47.59)scale(-1 1)"/></g><g filter="url(#j)"><ellipse cx=".387" cy="8.972" fill="#7e14ff" rx="4.407" ry="29.108" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(39.51 .387 8.972)"/></g><g filter="url(#k)"><ellipse cx="47.523" cy="-6.092" fill="#7e14ff" rx="4.407" ry="29.108" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(37.892 47.523 -6.092)"/></g><g filter="url(#l)"><ellipse cx="41.412" cy="6.333" fill="#47bfff" rx="5.971" ry="9.665" style="fill:#47bfff;fill:color(display-p3 .2799 .748 1);fill-opacity:1" transform="rotate(37.892 41.412 6.333)"/></g><g filter="url(#m)"><ellipse cx="-1.879" cy="38.332" fill="#7e14ff" rx="4.407" ry="29.108" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(37.892 -1.88 38.332)"/></g><g filter="url(#n)"><ellipse cx="-1.879" cy="38.332" fill="#7e14ff" rx="4.407" ry="29.108" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(37.892 -1.88 38.332)"/></g><g filter="url(#o)"><ellipse cx="35.651" cy="29.907" fill="#7e14ff" rx="4.407" ry="29.108" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(37.892 35.651 29.907)"/></g><g filter="url(#p)"><ellipse cx="38.418" cy="32.4" fill="#47bfff" rx="5.971" ry="15.297" style="fill:#47bfff;fill:color(display-p3 .2799 .748 1);fill-opacity:1" transform="rotate(37.892 38.418 32.4)"/></g></g><defs><filter id="b" width="60.045" height="41.654" x="-19.77" y="16.149" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="7.659"/></filter><filter id="c" width="90.34" height="51.437" x="-54.613" y="-7.533" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="7.659"/></filter><filter id="d" width="79.355" height="29.4" x="-49.64" y="2.03" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="e" width="79.579" height="29.4" x="-45.045" y="20.029" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="f" width="79.579" height="29.4" x="-43.513" y="21.178" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="g" width="74.749" height="58.852" x="15.756" y="-17.901" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="7.659"/></filter><filter id="h" width="61.377" height="25.362" x="23.548" y="2.284" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="i" width="61.377" height="25.362" x="23.548" y="2.284" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="j" width="56.045" height="63.649" x="-27.636" y="-22.853" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="k" width="54.814" height="64.646" x="20.116" y="-38.415" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="l" width="33.541" height="35.313" x="24.641" y="-11.323" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="m" width="54.814" height="64.646" x="-29.286" y="6.009" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="n" width="54.814" height="64.646" x="-29.286" y="6.009" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="o" width="54.814" height="64.646" x="8.244" y="-2.416" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="p" width="39.409" height="43.623" x="18.713" y="10.588" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter></defs></svg>
+
