@@ -18,7 +18,6 @@ function carregarStatus() {
 }
 
 function salvarStatus(status) {
-  // Garante que a pasta "data" existe antes de gravar o arquivo
   const dir = path.dirname(STATUS_PATH);
 
   if (!fs.existsSync(dir)) {
@@ -74,7 +73,6 @@ function garantirLinha(status, info) {
 
 function definirCelula(linha, tipo, filial, mesAno) {
   const atual = linha[tipo][filial];
-  // Nao rebaixa uma celula que ja tem mes valido por outra sem mes.
   if (atual && atual.atualizado && atual.mes && !mesAno) return;
   linha[tipo][filial] = { atualizado: true, mes: mesAno };
 }
@@ -87,7 +85,7 @@ function marcarTodasFiliais(linha, tipo, mesAno) {
 
 function marcarSomenteFiliais(linha, tipo, filiais, mesAno) {
   filiais.forEach((filial) => {
-    definirCelula(linha, tipo, filiais, mesAno);
+    definirCelula(linha, tipo, filial, mesAno);
   });
 }
 
@@ -97,6 +95,25 @@ function listarArquivosDaPasta(dir) {
     .readdirSync(dir, { withFileTypes: true })
     .filter((entry) => entry.isFile())
     .map((entry) => path.join(dir, entry.name));
+}
+
+function linhaTemAlgumArquivo(linha) {
+  return [...FILIAIS].some(
+    (filial) =>
+      linha.precos?.[filial]?.atualizado || linha.pendencias?.[filial]?.atualizado
+  );
+}
+
+function removerLinhasSemArquivos(status) {
+  const filtrado = {};
+
+  Object.entries(status).forEach(([chave, linha]) => {
+    if (linhaTemAlgumArquivo(linha)) {
+      filtrado[chave] = linha;
+    }
+  });
+
+  return filtrado;
 }
 
 function recalcularStatusCompleto() {
@@ -122,8 +139,9 @@ function recalcularStatusCompleto() {
     }
   });
 
-  salvarStatus(status);
-  return status;
+  const statusFinal = removerLinhasSemArquivos(status);
+  salvarStatus(statusFinal);
+  return statusFinal;
 }
 
 function getPaths() {
