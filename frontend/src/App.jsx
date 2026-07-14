@@ -142,7 +142,7 @@ function App() {
 
     return lista.filter((row) => {
       const texto = `${row.industria ?? ""} ${row.codigo ?? ""}`.toLowerCase();
-      return texto.includes(termo);
+      returntexto.includes(termo);
     });
   }, [dados, filtroIndustria]);
 

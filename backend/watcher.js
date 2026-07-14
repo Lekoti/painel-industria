@@ -97,26 +97,8 @@ function listarArquivosDaPasta(dir) {
     .map((entry) => path.join(dir, entry.name));
 }
 
-function linhaTemAlgumArquivo(linha) {
-  return [...FILIAIS].some(
-    (filial) =>
-      linha.precos?.[filial]?.atualizado || linha.pendencias?.[filial]?.atualizado
-  );
-}
-
-function removerLinhasSemArquivos(status) {
-  const filtrado = {};
-
-  Object.entries(status).forEach(([chave, linha]) => {
-    if (linhaTemAlgumArquivo(linha)) {
-      filtrado[chave] = linha;
-    }
-  });
-
-  return filtrado;
-}
-
 function recalcularStatusCompleto() {
+  // Seed inicial: TODAS as indústrias
   const status = criarSeedInicial();
   const arquivos = listarArquivosDaPasta(WATCH_PATH);
 
@@ -139,9 +121,9 @@ function recalcularStatusCompleto() {
     }
   });
 
-  const statusFinal = removerLinhasSemArquivos(status);
-  salvarStatus(statusFinal);
-  return statusFinal;
+  // NÃO remove linhas: mantém todas as indústrias, com células "-".
+  salvarStatus(status);
+  return status;
 }
 
 function getPaths() {
