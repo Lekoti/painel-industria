@@ -93,21 +93,21 @@ function App() {
     };
   }, []);
 
-  // Preços: continua sendo "todas as filiais ok"
+  // Preços: pelo menos uma filial ok
   function linhaTemPrecosAtualizados(row) {
     if (!row || !row.precos) return false;
 
     for (const filial of FILIAIS) {
       const infoFilial = row.precos[filial];
-      if (!infoFilial || infoFilial.atualizado !== true) {
-        return false;
+      if (infoFilial && infoFilial.atualizado === true) {
+        return true;
       }
     }
 
-    return true;
+    return false;
   }
 
-  // Pendências: agora é "pelo menos uma filial ok"
+  // Pendências: pelo menos uma filial ok
   function linhaTemPendenciasAtualizadas(row) {
     if (!row || !row.pendencias) return false;
 
@@ -125,23 +125,8 @@ function App() {
   function linhaTemAlgumaAtualizacao(row) {
     if (!row) return false;
 
-    if (row.precos) {
-      for (const filial of FILIAIS) {
-        const infoPreco = row.precos[filial];
-        if (infoPreco && infoPreco.atualizado === true) {
-          return true;
-        }
-      }
-    }
-
-    if (row.pendencias) {
-      for (const filial of FILIAIS) {
-        const infoPend = row.pendencias[filial];
-        if (infoPend && infoPend.atualizado === true) {
-          return true;
-        }
-      }
-    }
+    if (linhaTemPrecosAtualizados(row)) return true;
+    if (linhaTemPendenciasAtualizadas(row)) return true;
 
     return false;
   }
