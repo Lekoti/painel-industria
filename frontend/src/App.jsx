@@ -235,8 +235,38 @@ function App() {
                       )}
                     </div>
                   </td>
-                  {/* aqui continuam as células de preços e pendências
-                      exatamente como estavam antes no seu App.jsx original */}
+
+                  {/* células de preços */}
+                  {FILIAIS.map((filial) => {
+                    const info = row.precos?.[filial];
+                    const ok = info?.atualizado === true;
+                    const valor = ok ? info.mes : "-";
+
+                    return (
+                      <td
+                        key={`preco-${row.industria}-${filial}`}
+                        className={ok ? "ok" : "pending"}
+                      >
+                        {valor}
+                      </td>
+                    );
+                  })}
+
+                  {/* células de pendências */}
+                  {FILIAIS.map((filial) => {
+                    const info = row.pendencias?.[filial];
+                    const ok = info?.atualizado === true;
+                    const valor = ok ? info.mes : "-";
+
+                    return (
+                      <td
+                        key={`pend-${row.industria}-${filial}`}
+                        className={ok ? "ok" : "pending"}
+                      >
+                        {valor}
+                      </td>
+                    );
+                  })}
                 </tr>
               ))
             )}
