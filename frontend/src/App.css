@@ -10,8 +10,11 @@
   --text: #2a2a2a;
   --muted: #6f6f6f;
 
-  --group: #efe100;
-  --subhead: #f0df72;
+  /* grupos de cabeçalho */
+  --group-precos: #e0f2fe;
+  --group-pendencias: #fee2e2;
+  --subhead-precos: #eff6ff;
+  --subhead-pendencias: #fef2f2;
 
   --ok-bg: #c9f7c7;
   --ok-text: #126a1a;
@@ -61,22 +64,15 @@ body {
   margin-bottom: 12px;
 }
 
-.status-live {
-  font-size: 13px;
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-.status-live.on {
-  color: #16a34a;
-}
-
-.status-live.off {
-  color: #9ca3af;
+/* barra de botões de filtro */
+.toolbar-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .filter-input {
-  width: 320px;
+  width: 260px;
   max-width: 100%;
   padding: 10px 12px;
   font-size: 14px;
@@ -93,47 +89,36 @@ body {
 }
 
 .filter-input:focus {
-  border-color: #c7b800;
-  box-shadow: 0 0 0 3px rgba(239, 225, 0, 0.18);
+  border-color: #0f766e;
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.18);
 }
 
-.refresh-button {
-  border: 1px solid transparent;
-  border-radius: var(--radius-sm);
-  padding: 10px 14px;
-  min-height: 40px;
-  font-size: 14px;
-  font-weight: 700;
-  background: var(--button-bg);
-  color: var(--button-text);
+/* botões de filtro */
+.filter-btn {
+  padding: 8px 12px;
+  font-size: 12px;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  background: #f9fafb;
+  color: #111827;
   cursor: pointer;
-  white-space: nowrap;
   transition:
-    background 0.2s ease,
-    opacity 0.2s ease,
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
-.refresh-button:hover {
-  background: var(--button-bg-hover);
-  box-shadow: 0 6px 16px rgba(15, 118, 110, 0.2);
+.filter-btn:hover {
+  background: #e5e7eb;
+  border-color: #9ca3af;
 }
 
-.refresh-button:active {
-  transform: translateY(1px);
-}
-
-.refresh-button:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.22);
-}
-
-.refresh-button:disabled {
-  background: var(--button-disabled);
-  cursor: not-allowed;
-  opacity: 0.75;
-  box-shadow: none;
+.filter-btn.active {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #1d4ed8;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
 }
 
 .table-wrap {
@@ -174,33 +159,44 @@ body {
   border-right: 0;
 }
 
-/* Cabeçalho */
+/* Cabeçalho – primeira linha */
 .painel thead tr:first-child th {
   position: sticky;
   top: 0;
   z-index: 30;
-  background: var(--group);
   color: var(--text);
   font-weight: 700;
   font-size: 14px;
 }
 
+/* cabeçalho de grupo de preços */
+.group-precos {
+  background: var(--group-precos) !important;
+}
+
+/* cabeçalho de grupo de pendências */
+.group-pendencias {
+  background: var(--group-pendencias) !important;
+}
+
+/* Cabeçalho – segunda linha */
 .painel thead tr:nth-child(2) th {
   position: sticky;
   top: var(--header-row-1);
   z-index: 31;
-  background: var(--subhead);
   color: var(--text);
   font-weight: 700;
   font-size: 12px;
 }
 
-.group {
-  background: var(--group) !important;
+/* subcabeçalho de preços */
+.subhead-precos {
+  background: var(--subhead-precos) !important;
 }
 
-.subhead {
-  background: var(--subhead) !important;
+/* subcabeçalho de pendências */
+.subhead-pendencias {
+  background: var(--subhead-pendencias) !important;
 }
 
 /* Coluna INDUSTRIA fixa */
@@ -296,9 +292,13 @@ body {
     width: 100%;
   }
 
-  .refresh-button {
+  .toolbar-buttons {
     width: 100%;
-    justify-content: center;
+  }
+
+  .filter-btn {
+    flex: 1 1 auto;
+    text-align: center;
   }
 
   .painel {
