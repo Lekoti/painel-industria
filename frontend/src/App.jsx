@@ -121,7 +121,7 @@ function App() {
     return false;
   }
 
-  // Tudo atualizado: alguma coisa atualizada (preço OU pendência, em qualquer filial)
+  // Contém alguma atualização: preço OU pendência atualizada em qualquer filial
   function linhaTemAlgumaAtualizacao(row) {
     if (!row) return false;
 
@@ -193,7 +193,16 @@ function App() {
             }
             onClick={() => setFiltroTipo("todos-atualizados")}
           >
-            Tudo atualizado
+            Contém alguma atualização
+          </button>
+          <button
+            className={filtroTipo === "todos" ? "filter-btn active" : "filter-btn"}
+            onClick={() => {
+              setFiltroTipo("todos");
+              setFiltroIndustria("");
+            }}
+          >
+            Limpar filtros
           </button>
         </div>
       </div>
