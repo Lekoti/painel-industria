@@ -10,7 +10,7 @@ const API_URL =
 function App() {
   const [dados, setDados] = useState({});
   const [filtroIndustria, setFiltroIndustria] = useState("");
-  const [filtroTipo, setFiltroTipo] = useState("todos"); // "precos", "pendencias", "todos"
+  const [filtroTipo, setFiltroTipo] = useState("todos"); // "precos", "pendencias", "todos-atualizados"
   const [conectado, setConectado] = useState(false);
 
   useEffect(() => {
@@ -94,33 +94,29 @@ function App() {
   }, []);
 
   function linhaTemPrecosAtualizados(row) {
-    if (!row) return false;
-    let ok = true;
+    if (!row || !row.precos) return false;
 
     for (const filial of FILIAIS) {
-      const campo = row[`preco_${filial}`];
-      if (campo === false || campo === "NAO" || campo === "PENDENTE") {
-        ok = false;
-        break;
+      const infoFilial = row.precos[filial];
+      if (!infoFilial || infoFilial.atualizado !== true) {
+        return false;
       }
     }
 
-    return ok;
+    return true;
   }
 
   function linhaTemPendenciasAtualizadas(row) {
-    if (!row) return false;
-    let ok = true;
+    if (!row || !row.pendencias) return false;
 
     for (const filial of FILIAIS) {
-      const campo = row[`pendencia_${filial}`];
-      if (campo === false || campo === "NAO" || campo === "PENDENTE") {
-        ok = false;
-        break;
+      const infoFilial = row.pendencias[filial];
+      if (!infoFilial || infoFilial.atualizado !== true) {
+        return false;
       }
     }
 
-    return ok;
+    return true;
   }
 
   const linhas = useMemo(() => {
@@ -240,7 +236,7 @@ function App() {
                     </div>
                   </td>
                   {/* aqui continuam as células de preços e pendências
-                      exatamente como estavam antes no seu App.jsx */}
+                      exatamente como estavam antes no seu App.jsx original */}
                 </tr>
               ))
             )}
