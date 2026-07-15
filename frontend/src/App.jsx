@@ -93,6 +93,7 @@ function App() {
     };
   }, []);
 
+  // Preços: continua sendo "todas as filiais ok"
   function linhaTemPrecosAtualizados(row) {
     if (!row || !row.precos) return false;
 
@@ -106,17 +107,43 @@ function App() {
     return true;
   }
 
+  // Pendências: agora é "pelo menos uma filial ok"
   function linhaTemPendenciasAtualizadas(row) {
     if (!row || !row.pendencias) return false;
 
     for (const filial of FILIAIS) {
       const infoFilial = row.pendencias[filial];
-      if (!infoFilial || infoFilial.atualizado !== true) {
-        return false;
+      if (infoFilial && infoFilial.atualizado === true) {
+        return true;
       }
     }
 
-    return true;
+    return false;
+  }
+
+  // Tudo atualizado: alguma coisa atualizada (preço OU pendência, em qualquer filial)
+  function linhaTemAlgumaAtualizacao(row) {
+    if (!row) return false;
+
+    if (row.precos) {
+      for (const filial of FILIAIS) {
+        const infoPreco = row.precos[filial];
+        if (infoPreco && infoPreco.atualizado === true) {
+          return true;
+        }
+      }
+    }
+
+    if (row.pendencias) {
+      for (const filial of FILIAIS) {
+        const infoPend = row.pendencias[filial];
+        if (infoPend && infoPend.atualizado === true) {
+          return true;
+        }
+      }
+    }
+
+    return false;
   }
 
   const linhas = useMemo(() => {
@@ -139,10 +166,7 @@ function App() {
     } else if (filtroTipo === "pendencias") {
       filtrada = filtrada.filter((row) => linhaTemPendenciasAtualizadas(row));
     } else if (filtroTipo === "todos-atualizados") {
-      filtrada = filtrada.filter(
-        (row) =>
-          linhaTemPrecosAtualizados(row) && linhaTemPendenciasAtualizadas(row)
-      );
+      filtrada = filtrada.filter((row) => linhaTemAlgumaAtualizacao(row));
     }
 
     return filtrada;
@@ -236,7 +260,6 @@ function App() {
                     </div>
                   </td>
 
-                  {/* células de preços */}
                   {FILIAIS.map((filial) => {
                     const info = row.precos?.[filial];
                     const ok = info?.atualizado === true;
@@ -252,7 +275,6 @@ function App() {
                     );
                   })}
 
-                  {/* células de pendências */}
                   {FILIAIS.map((filial) => {
                     const info = row.pendencias?.[filial];
                     const ok = info?.atualizado === true;
